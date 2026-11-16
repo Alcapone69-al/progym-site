@@ -114,6 +114,18 @@ $$('[data-tabs]').forEach(function(box){
   addEventListener('hashchange',function(){var i=fromHash();if(i>-1)sel(i,false,false)});
 });
 
+// galeria elástica de ginásios: passar o rato, focar ou tocar abre o ginásio; clicar no aberto navega
+$$('[data-elastic]').forEach(function(box){
+  var els=$$('.el',box);
+  var fine=matchMedia('(hover: hover) and (pointer: fine)');
+  function act(el){els.forEach(function(x){x.classList.toggle('is-active',x===el)})}
+  els.forEach(function(el){
+    el.addEventListener('mouseenter',function(){if(fine.matches)act(el)});
+    el.addEventListener('focus',function(){if(el.matches(':focus-visible'))act(el)});
+    el.addEventListener('click',function(e){if(!el.classList.contains('is-active')){e.preventDefault();act(el)}});
+  });
+});
+
 /* ============ Formulários -> WhatsApp ============ */
 function waUrl(msg){return 'https://wa.me/'+WA+'?text='+encodeURIComponent(msg)}
 function send(msg,btn,note){
@@ -256,29 +268,6 @@ function initMotion(){
     var ph=$('.phero');
     if(ph){
       gsap.to($('.phero-media img',ph),{yPercent:desk?8:4,scale:desk?1.18:1.1,ease:'none',scrollTrigger:{trigger:ph,start:'top top',end:'bottom top',scrub:true}});
-    }
-
-    // (criado primeiro para que o espaço do pin conte nas posições seguintes)
-    if(desk){
-      // ginásios: faixa horizontal fixa durante o scroll
-      var sec=$('.gyms-h'),track=sec&&$('.gh-track',sec);
-      if(sec&&track){
-        sec.classList.add('is-h');
-        var dist=function(){return Math.max(0,track.scrollWidth-window.innerWidth)};
-        var tw=gsap.to(track,{x:function(){return -dist()},ease:'none',scrollTrigger:{trigger:sec,start:'top top',end:function(){return '+='+dist()},pin:true,scrub:.6,anticipatePin:1,invalidateOnRefresh:true}});
-        var prog=$('.gh-prog i',sec);
-        if(prog)gsap.to(prog,{scaleX:1,ease:'none',scrollTrigger:{trigger:sec,start:'top top',end:function(){return '+='+dist()},scrub:true,invalidateOnRefresh:true}});
-        // foco por teclado: leva o scroll até ao cartão focado
-        var onFocus=function(e){
-          var c=e.target.closest&&e.target.closest('.gh-card');if(!c)return;
-          sec.scrollLeft=0;
-          var s=tw.scrollTrigger,dd=dist();if(!dd)return;
-          var target=Math.min(1,Math.max(0,(c.offsetLeft-(window.innerWidth-c.offsetWidth)/2)/dd));
-          window.scrollTo({top:s.start+(s.end-s.start)*target,behavior:'auto'});
-        };
-        sec.addEventListener('focusin',onFocus);
-        undo.push(function(){sec.removeEventListener('focusin',onFocus);sec.classList.remove('is-h')});
-      }
     }
 
     // títulos: palavra a palavra

@@ -250,10 +250,19 @@ def gcard(g, root, href, sizes="60vw", cls="gh-card"):
       <div class="gh-tx"><h3>Pro Gym %s</h3><p class="area">%s</p><p class="tel">%s</p><span class="go">Ver ginásio %s</span></div></a>""" % (
         cls, href, pic(root, g["cover"], "Pro Gym %s, %s" % (g["name"], ALT.get(os.path.basename(g["cover"]).rsplit(".", 1)[0], "vista do ginásio")), sizes), e(g["name"]), e(g["area"]), g["tel"], ARROW)
 
+def elastic_item(g, root, i):
+    base = os.path.basename(g["cover"]).rsplit(".", 1)[0]
+    alt = "Pro Gym %s, %s" % (g["name"], ALT.get(base, "vista do ginásio"))
+    on = " is-active" if i == 0 else ""
+    return """<a class="el%s" href="%sgyms/%s/" aria-label="Pro Gym %s, %s"><div class="el-img">%s</div>
+      <div class="el-on"><span class="el-tag">%s</span><h3>%s</h3><p class="el-tel">%s</p><span class="go">Ver ginásio %s</span></div>
+      <div class="el-off" aria-hidden="true"><span class="el-v">%s</span><span class="el-n">%02d</span></div></a>""" % (
+        on, root, g["slug"], e(g["name"]), e(g["area"]), pic(root, g["cover"], alt, "(min-width:900px) 60vw, 100vw"), e(g["area"]), e(g["name"]), g["tel"], ARROW, e(g["name"]), i + 1)
+
 # ---------------- HOME ----------------
 def home():
     root = ""
-    gcards = "".join(gcard(g, root, "gyms/%s/" % g["slug"], "(min-width:900px) 58vw, 100vw") for g in GYMS)
+    gcards = "".join(elastic_item(g, root, i) for i, g in enumerate(GYMS))
     body = """
 <section class="hero" aria-label="Apresentação">
   <div class="hero-media">%(heroimg)s</div>
@@ -275,13 +284,10 @@ def home():
   <p class="stmt" aria-label="Quatro ginásios em Maputo e Matola. Aulas, personal trainer, fisioterapia e nutrição. A primeira sessão é por nossa conta.">%(stmt)s</p>
 </div></section>
 
-<section class="gyms-h" id="ginasios">
-  <div class="gh-track">
-    <div class="gh-intro"><h2 class="sp">%(gh2)s</h2><p class="sub rv">Marés, Alto Maé, Matola e Zimpeto, abertos de segunda a domingo.</p></div>
-    %(gcards)s
-  </div>
-  <div class="gh-prog" aria-hidden="true"><i></i></div>
-</section>
+<section id="ginasios"><div class="wrap">
+  <h2 class="sp">%(gh2)s</h2><p class="sub rv">Marés, Alto Maé, Matola e Zimpeto, abertos de segunda a domingo. Passa o rato ou toca num ginásio para o ver.</p>
+</div>
+<div class="elastic rv" data-elastic>%(gcards)s</div></section>
 
 <section class="dark-sec" id="planos" data-sheet><div class="wrap">
   <h2 class="sp">%(p2)s</h2>
