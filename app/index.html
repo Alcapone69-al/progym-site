@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>App Pro Gym | Brevemente</title>
+<meta name="description" content="A app para os membros do Pro Gym: regista o treino, acompanha o progresso e compete com os amigos do teu ginásio. Brevemente.">
+
+<link rel="canonical" href="https://www.progym.co.mz/app/">
+<meta property="og:title" content="App Pro Gym | Brevemente">
+<meta property="og:description" content="A app para os membros do Pro Gym: regista o treino, acompanha o progresso e compete com os amigos do teu ginásio. Brevemente.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.progym.co.mz/app/">
+<meta property="og:image" content="https://www.progym.co.mz/assets/img/hero/hero-2.jpg">
+<meta property="og:locale" content="pt_MZ">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230A0A0A'/%3E%3Ctext x='32' y='44' font-size='34' font-weight='900' text-anchor='middle' fill='%23F97316' font-family='Arial Narrow,Arial'%3EPG%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+
+</head>
+<body>
+<a class="skip" href="#conteudo">Saltar para o conteúdo</a>
+<header class="top always" id="top">
+  <div class="wrap nav">
+    <a class="logo" href="../" aria-label="Pro Gym Fitness, início"><img src="../assets/img/logo.png" alt="Pro Gym Fitness" width="150" height="38"></a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav">Menu</button>
+    <nav id="mainNav" aria-label="Principal"><ul><li class="sub-nav"><a href="../#ginasios">Ginásios</a><ul class="drop"><li><a href="../gyms/mares/">Marés</a></li><li><a href="../gyms/alto-mae/">Alto Maé</a></li><li><a href="../gyms/matola/">Matola</a></li><li><a href="../gyms/zimpeto/">Zimpeto</a></li></ul></li><li><a href="../pricing/">Preços</a></li><li><a href="../plans/">Aulas</a></li><li><a href="../services/">Serviços</a></li><li><a href="../app/" aria-current="page">App</a></li><li><a href="../store/">Loja</a></li><li><a href="../contact/">Contacto</a></li></ul></nav>
+    <a class="btn small" href="../#marcar">Sessão grátis</a>
+  </div>
+</header>
+<main id="conteudo">
+<section class="page-hero" style="background-image:url('../assets/img/hero/hero-2.jpg')"><div class="wrap"><div class="crumbs"><a href="../">Início</a> / App</div><h1>A app do Pro Gym</h1><p>Para membros: o teu treino e os teus amigos do ginásio, no telemóvel.</p></div></section>
+<section class="dark-sec"><div class="wrap app-grid">
+<div><span class="soon">Brevemente</span><h2>O teu treino, no telemóvel</h2>
+<p class="sub">Uma app para os membros do Pro Gym registarem o progresso e treinarem em conjunto. O cartão de acesso e as mensalidades continuam como hoje.</p>
+<ul class="feat"><li>Regista cargas, plano de treino, exercícios, dias de ginásio, cardio e peso corporal.</li>
+<li>Sequências de dias e desafios diários.</li>
+<li>Ranking de força entre amigos do mesmo ginásio.</li>
+<li>Feed privado do grupo e notificações para se motivarem.</li>
+<li>Relatório mensal e imagem pronta para partilhar no Instagram.</li></ul>
+<p class="demo-note">Pré-visualização com dados de exemplo. Experimenta: troca o ranking e marca o desafio do dia.</p></div>
+<div class="phone" aria-label="Pré-visualização da app Pro Gym"><div class="screen">
+  <div class="row"><div><div class="hi">Olá, Nelson</div><div class="loc">Pro Gym Matola</div></div><div class="loc">Hoje</div></div>
+  <div class="streak"><div><div style="font-size:.85rem;color:#cfcfcb">Sequência de treinos</div><b id="streakN">12</b> <span style="color:#cfcfcb">dias</span></div>
+    <div class="week" aria-hidden="true"><i class="on" style="height:60%"></i><i class="on" style="height:90%"></i><i style="height:25%"></i><i class="on" style="height:75%"></i><i class="on" style="height:100%"></i><i class="on" style="height:55%"></i><i style="height:20%"></i></div></div>
+  <div class="seg" role="group" aria-label="Tipo de ranking"><button id="rkVisits" aria-pressed="true">Por visitas</button><button id="rkGoal" aria-pressed="false">Por % da meta</button></div>
+  <ol class="rank" id="rank"></ol>
+  <div class="challenge" id="challenge"><div><div class="t">Desafio do dia: 25 flexões</div><div class="s" id="chS">Ainda por fazer</div></div><button id="chBtn">Fiz</button></div>
+</div></div></div></section>
+<section class="orange-sec"><div class="wrap book"><div><h2>Quero ser dos primeiros</h2><p class="sub" style="color:var(--iron)">Diz-nos o teu nome e o teu ginásio. Avisamos-te quando a app estiver disponível.</p></div>
+<form class="f" id="waitForm" novalidate><label>Nome<input id="wName" autocomplete="name" placeholder="O teu nome" required></label>
+<label>Treino no Pro Gym<select id="wUnit"><option>Marés</option><option>Alto Maé</option><option>Matola</option><option>Zimpeto</option></select></label><div class="err" id="wErr" role="alert"></div>
+<button class="btn" type="submit">Enviar pelo WhatsApp</button><p class="fine">Abre o WhatsApp com a mensagem pronta. Este site não guarda os teus dados.</p></form></div></section>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div><img src="../assets/img/logo.png" alt="Pro Gym Fitness" width="173" height="44"><p>Ginásios em Maputo e Matola.<br>Best Price | Best Quality</p></div>
+      <div><h3>Ginásios</h3><ul><li><a href="../gyms/mares/">Marés</a></li><li><a href="../gyms/alto-mae/">Alto Maé</a></li><li><a href="../gyms/matola/">Matola</a></li><li><a href="../gyms/zimpeto/">Zimpeto</a></li></ul></div>
+      <div><h3>Explorar</h3><ul>
+        <li><a href="../pricing/">Preços</a></li><li><a href="../plans/">Aulas</a></li>
+        <li><a href="../services/">Serviços</a></li><li><a href="../app/">App Pro Gym</a></li>
+        <li><a href="../store/">Loja</a></li><li><a href="../gallery/">Eventos</a></li></ul></div>
+      <div><h3>Contactos</h3><ul>
+        <li><a href="tel:+258844414441">+258 84 441 4441</a></li>
+        <li><a href="https://wa.me/258844414441" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="mailto:info@progym.co.mz">info@progym.co.mz</a></li>
+        <li><a href="https://www.facebook.com/mozprogym" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="https://www.instagram.com/mozprogym/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.linkedin.com/company/pro-gym-fitness-lda/" target="_blank" rel="noopener">LinkedIn</a></li></ul></div>
+    </div>
+    <div class="legal"><span>© 2025 Pro Gym Fitness, Lda. Todos os direitos reservados.</span><span>Website por YFX</span></div>
+  </div>
+</footer>
+<a class="wa-float" href="https://wa.me/258844414441" target="_blank" rel="noopener" aria-label="Falar connosco no WhatsApp">WhatsApp</a>
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>
