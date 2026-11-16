@@ -19,3 +19,12 @@ Todo o texto, preços, moradas e telefones estão em `build.py`. Depois de edita
 - Contactos: o site antigo mostra `progym@gmail.com` nas páginas de Alto Maé e Zimpeto. Neste site usamos `info@progym.co.mz` em todo o lado. Confirmar com o Pro Gym.
 - Os formulários abrem o WhatsApp da administração (+258 84 441 4441) com a mensagem pronta; não guardam dados.
 - A página da app (/app/) anuncia a app como "Brevemente". Ajustar quando houver data.
+
+
+## Motion design (versão 2)
+
+- Animações com GSAP + ScrollTrigger (ficheiros em `assets/js/vendor/`, auto-alojados) e CSS. Tudo em `assets/js/site.js` e `assets/css/style.css`.
+- O site funciona sem JavaScript, sem GSAP e com `prefers-reduced-motion`: os estados escondidos só existem sob `html.motion`.
+- Em ecrãs até 900px as animações pesadas (paralaxe, faixa horizontal de ginásios) ficam desligadas.
+- Transições entre páginas: View Transitions do browser (onde existirem) + barra de progresso.
+- Fontes auto-alojadas em `assets/fonts/`. Versões reduzidas das imagens em `assets/img/_s/` são geradas pelo `build.py` (precisa de `pip install pillow`).
