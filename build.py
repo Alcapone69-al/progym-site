@@ -58,15 +58,15 @@ def variants(rel):
     src = os.path.join(OUT, IMG, rel)
     w, h = Image.open(src).size
     vs = []
-    if rel.lower().endswith((".jpg", ".jpeg")) and w >= 1300:
+    if rel.lower().endswith((".jpg", ".jpeg")) and w >= 1300 and not rel.startswith("plans/"):
         base = rel.rsplit(".", 1)[0].replace("/", "_")
-        for tw in (640, 1100):
+        for tw in (640, 1100, 1600):
             out = "_s/%s-%d.jpg" % (base, tw)
             p = os.path.join(OUT, IMG, out)
             if not os.path.exists(p):
                 os.makedirs(os.path.dirname(p), exist_ok=True)
                 im = Image.open(src).convert("RGB")
-                im.resize((tw, round(h * tw / w)), Image.LANCZOS).save(p, "JPEG", quality=78, optimize=True, progressive=True)
+                im.resize((tw, round(h * tw / w)), Image.LANCZOS).save(p, "JPEG", quality=86, optimize=True, progressive=True)
             vs.append((out, tw))
     _cache[rel] = (w, h, vs)
     return _cache[rel]
@@ -357,16 +357,34 @@ def gyms():
     PAGES.append(("gyms/", True))
     for g in GYMS:
         path = "gyms/%s/" % g["slug"]
-        photos = "".join(mask(root, "gyms/%s/%s.jpg" % (g["slug"], p), "Pro Gym %s, %s" % (g["name"], ALT.get(p, "foto %s" % p.split("-")[-1] if p[-1].isdigit() else "foto")), "(min-width:900px) 45vw, 100vw") for p in g["photos"])
-        plan = ""
-        if g["plan"]:
-            plan = '<p class="rv" style="margin-top:1.4rem"><a class="btn dark" href="%splans/#%s">Ver horário das aulas</a></p>' % (root, g["slug"])
-        others = "".join('<li><a href="%sgyms/%s/">Pro Gym %s <span>%s</span></a></li>' % (root, o["slug"], e(o["name"]), e(o["area"])) for o in GYMS if o is not g)
         cover_alt = "Pro Gym %s, %s" % (g["name"], ALT.get(os.path.basename(g["cover"]).rsplit(".", 1)[0], "vista do ginásio"))
+        panels = ""
+        for k, p in enumerate(g["photos"]):
+            label = ALT.get(p) or "Foto %d" % (k + 1)
+            label = label[0].upper() + label[1:]
+            panels += """<div class="el%s" tabindex="0" role="group" aria-label="%s"><div class="el-img">%s</div>
+      <div class="el-on"><span class="el-tag">Pro Gym %s</span><h3>%s</h3></div>
+      <div class="el-off" aria-hidden="true"><span class="el-v">%s</span></div></div>""" % (
+                " is-active" if k == 0 else "", e(label), pic(root, "gyms/%s/%s.jpg" % (g["slug"], p), "Pro Gym %s, %s" % (g["name"], label.lower()), "(min-width:900px) 60vw, 100vw"), e(g["name"]), e(label), e(label))
+        if g["plan"]:
+            w, h, _ = variants(g["plan"])
+            tt = """<section class="paper tight"><div class="wrap"><h2 class="sp wide">%s</h2>
+<a class="imglink rv" href="%s%s%s" target="_blank" rel="noopener" aria-label="Abrir o horário das aulas do Pro Gym %s em tamanho real" style="display:block;margin-top:2rem;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:#fff"><img loading="lazy" decoding="async" src="%s%s%s" width="%d" height="%d" alt="Horário das aulas do Pro Gym %s" style="width:100%%;height:auto"></a>
+<p class="fineprint rv">Toca na imagem para abrir em tamanho real. <a class="ul" href="%splans/#%s">Ver todos os ginásios</a></p></div></section>""" % (
+                sp("Aulas no " + g["name"]), root, IMG, g["plan"], e(g["name"]), root, IMG, g["plan"], w, h, e(g["name"]), root, g["slug"])
+        else:
+            tt = """<section class="paper tight"><div class="wrap"><h2 class="sp wide">%s</h2><p class="sub rv">Pergunta o horário das aulas na receção ou pelo WhatsApp.</p>
+<div class="actions rv" style="margin-top:1.4rem"><a class="btn dark" href="%s" target="_blank" rel="noopener">Pedir horário</a></div></div></section>""" % (
+                sp("Aulas no " + g["name"]), wa("Olá! Gostaria de saber o horário das aulas no Pro Gym Zimpeto."))
+        extra = ""
+        if g["slug"] == "matola":
+            extra = '<a class="btn dark" href="%sservices/#arena">Ver a arena desportiva</a>' % root
+        others = "".join('<li><a href="%sgyms/%s/">Pro Gym %s <span>%s</span></a></li>' % (root, o["slug"], e(o["name"]), e(o["area"])) for o in GYMS if o is not g)
         body = page_hero(root, [("Início", ""), ("Ginásios", "gyms/"), (g["name"], None)], "Pro Gym " + g["name"], g["area"], g["cover"], cover_alt) + """
 <section class="tight"><div class="wrap info">
-  <div><h2 class="sp">%(h2)s</h2><p class="sub rv" style="max-width:62ch;color:var(--ink2)">%(d)s</p>%(plan)s
-  <div class="actions rv" style="margin-top:1.4rem"><a class="btn" href="%(root)s#marcar">Marcar visita grátis</a><a class="btn dark" href="%(map)s" target="_blank" rel="noopener">Como chegar</a></div></div>
+  <div><div class="status rv" id="status" role="status" style="background:var(--iron);color:#fff;margin-bottom:1.4rem"><span class="dot"></span><span id="statusText">A verificar o horário…</span></div>
+  <h2 class="sp">%(h2)s</h2><p class="sub rv" style="max-width:62ch;color:var(--ink2)">%(d)s</p>
+  <div class="actions rv" style="margin-top:1.6rem"><a class="btn" href="#marcar">Marcar visita grátis</a><a class="btn dark" href="%(map)s" target="_blank" rel="noopener">Como chegar</a>%(extra)s</div></div>
   <dl class="facts rv">
     <div><dt>Morada</dt><dd>%(addr)s</dd></div>
     <div><dt>Telefone</dt><dd><a href="%(tl)s">%(tel)s</a></dd></div>
@@ -374,11 +392,25 @@ def gyms():
     <div><dt>Email</dt><dd><a href="mailto:%(em)s">%(em)s</a></dd></div>
   </dl>
 </div></section>
-<section class="dark-sec tight"><div class="wrap"><h2 class="sp wide">%(hh)s</h2><div class="rv">%(hrs)s</div></div></section>
-<section class="tight"><div class="wrap"><h2 class="sp wide">%(ph2)s</h2><div class="photos">%(ph)s</div></div></section>
-<section class="paper tight"><div class="wrap"><h2 class="sp wide">%(oh)s</h2><ul class="more-gyms rv">%(others)s</ul></div></section>
-""" % dict(h2=sp("Treina no Pro Gym " + g["name"]), d=e(g["desc"]), plan=plan, root=root, map=maps("Pro Gym " + g["name"] + ", " + g["addr"]), addr=e(g["addr"]), tl=tel(g["tel"]), tel=g["tel"], wa=WA, atel=ADMIN_TEL, em=EMAIL,
-           hh=sp("Horário"), hrs=hours_list(), ph2=sp("Fotos"), ph=photos, oh=sp("Outros ginásios"), others=others)
+<section style="padding-top:0"><div class="wrap"><h2 class="sp">%(ph2)s</h2><p class="sub rv">Passa o rato ou toca numa foto para a ver maior.</p></div>
+<div class="elastic rv" data-elastic>%(panels)s</div></section>
+<section class="dark-sec" data-sheet><div class="wrap"><div class="info">
+  <div><h2 class="sp">%(hh)s</h2><div class="rv">%(hrs)s</div></div>
+  <div><h2 class="sp" style="font-size:clamp(2.3rem,5vw,4rem)">%(pp)s</h2>
+  <div class="pgrid" style="grid-template-columns:1fr;margin-top:1.6rem">
+    <div class="plan best rv"><span class="tag">Melhor valor</span><h3>Anual</h3><div class="price">24.990<small>MT</small></div><p class="note">3,6 meses grátis. Poupas 10.890 MT.</p></div>
+    <ul class="plist"><li class="rv"><span><b>Mensalidade</b><small>Todos os ginásios</small></span><span class="pv">2.990<small> MT</small></span></li>
+    <li class="rv"><span><b>Estudante</b><small>1 ginásio, até 21 anos</small></span><span class="pv">1.500<small> MT</small></span></li>
+    <li class="rv"><span><b>Família</b><small>Pais e filhos</small></span><span class="pv">2.690<small> MT</small></span></li></ul></div>
+  <div class="actions rv" style="margin-top:1.6rem"><a class="btn" href="%(root)spricing/">Ver todos os preços</a></div></div>
+</div></div></section>
+%(tt)s
+<section class="tight"><div class="wrap"><h2 class="sp wide">%(oh)s</h2><ul class="more-gyms rv">%(others)s</ul></div></section>
+%(book)s
+%(faq)s
+""" % dict(h2=sp("Treina no Pro Gym " + g["name"]), d=e(g["desc"]), root=root, map=maps("Pro Gym " + g["name"] + ", " + g["addr"]), addr=e(g["addr"]), tl=tel(g["tel"]), tel=g["tel"], wa=WA, atel=ADMIN_TEL, em=EMAIL, extra=extra,
+           ph2=sp("Conhece o espaço"), panels=panels, hh=sp("Horário"), hrs=hours_list(), pp=sp("Preços"), tt=tt, oh=sp("Outros ginásios"), others=others,
+           book=booking_section(root, g["name"]), faq=faq_section())
         ld = org_ld(); ld["name"] = "Pro Gym " + g["name"]; ld["telephone"] = g["tel"].replace(" ", ""); ld["address"] = {"@type": "PostalAddress", "streetAddress": g["addr"], "addressCountry": "MZ"}
         write(path, layout(path, "Pro Gym %s | Ginásio em %s" % (g["name"], g["area"].split(",")[-1].strip()), "Pro Gym %s: %s Morada, telefone, horário e fotos." % (g["name"], g["desc"][:110].rsplit(" ", 1)[0] + "…"), body, jsonld=ld, og_img=g["cover"]))
         PAGES.append((path, True))
