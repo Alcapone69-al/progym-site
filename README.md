@@ -28,3 +28,11 @@ Todo o texto, preços, moradas e telefones estão em `build.py`. Depois de edita
 - Em ecrãs até 900px as animações pesadas (paralaxe, faixa horizontal de ginásios) ficam desligadas.
 - Transições entre páginas: View Transitions do browser (onde existirem) + barra de progresso.
 - Fontes auto-alojadas em `assets/fonts/`. Versões reduzidas das imagens em `assets/img/_s/` são geradas pelo `build.py` (precisa de `pip install pillow`).
+
+## Idiomas (português e inglês)
+- O texto-fonte está em português no `build.py`; as traduções para inglês estão todas em `i18n.py` (chave = texto em português).
+- `python3 build.py` gera as duas versões: português na raiz e inglês em `/en/` (mesma estrutura de páginas).
+- Se faltar uma tradução, o build falha e lista os textos em falta. Para mudar um texto, altera-o no `build.py` e na chave/valor correspondente do `i18n.py`.
+- Seletor PT | EN no cabeçalho (mantém a página e o separador). Quem tem o navegador noutra língua vê um aviso discreto a oferecer o inglês (sem redirecionamento automático, para não prejudicar o Google).
+- `hreflang`, canonical e sitemap com as duas línguas. Mensagens de WhatsApp em inglês levam também a versão em português para a receção.
+- O estado "Aberto agora" respeita os feriados nacionais de data fixa e a Sexta-feira Santa.

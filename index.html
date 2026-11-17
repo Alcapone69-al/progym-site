@@ -4,15 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pro Gym Fitness | Ginásios em Maputo e Matola</title>
-<meta name="description" content="Quatro ginásios em Maputo e Matola: Marés, Alto Maé, Matola e Zimpeto. Aulas de grupo, personal trainer, fisioterapia, nutrição, padel e futsal. Marque a primeira sessão grátis.">
+<meta name="description" content="Quatro ginásios em Maputo e Matola: Marés, Alto Maé, Matola e Zimpeto. Aulas, personal trainer, fisioterapia, nutrição e padel. Primeira sessão grátis.">
 
 <link rel="canonical" href="https://www.progym.co.mz/">
+<link rel="alternate" hreflang="pt" href="https://www.progym.co.mz/">
+<link rel="alternate" hreflang="en" href="https://www.progym.co.mz/en/">
+<link rel="alternate" hreflang="x-default" href="https://www.progym.co.mz/">
 <meta property="og:title" content="Pro Gym Fitness | Ginásios em Maputo e Matola">
-<meta property="og:description" content="Quatro ginásios em Maputo e Matola: Marés, Alto Maé, Matola e Zimpeto. Aulas de grupo, personal trainer, fisioterapia, nutrição, padel e futsal. Marque a primeira sessão grátis.">
+<meta property="og:description" content="Quatro ginásios em Maputo e Matola: Marés, Alto Maé, Matola e Zimpeto. Aulas, personal trainer, fisioterapia, nutrição e padel. Primeira sessão grátis.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.progym.co.mz/">
 <meta property="og:image" content="https://www.progym.co.mz/assets/img/hero/hero-2.jpg">
 <meta property="og:locale" content="pt_MZ">
+<meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0A0A0A">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230A0A0A'/%3E%3Ctext x='32' y='44' font-size='34' font-weight='900' text-anchor='middle' fill='%23F97316' font-family='Arial Narrow,Arial'%3EPG%3C/text%3E%3C/svg%3E">
@@ -31,6 +35,7 @@
     <a class="logo" href="" aria-label="Pro Gym Fitness, início"><img src="assets/img/logo.png" alt="Pro Gym Fitness" width="177" height="38"></a>
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav">Menu</button>
     <nav id="mainNav" aria-label="Principal"><ul><li class="sub-nav"><a href="gyms/">Ginásios</a><ul class="drop"><li><a href="gyms/mares/">Marés</a></li><li><a href="gyms/alto-mae/">Alto Maé</a></li><li><a href="gyms/matola/">Matola</a></li><li><a href="gyms/zimpeto/">Zimpeto</a></li></ul></li><li><a href="pricing/">Preços</a></li><li><a href="plans/">Aulas</a></li><li><a href="services/">Serviços</a></li><li><a href="app/">App</a></li><li><a href="store/">Loja</a></li><li><a href="contact/">Contacto</a></li></ul></nav>
+    <div class="lang" role="group" aria-label="Idioma"><a lang="pt" hreflang="pt" href="" aria-current="true" title="Português">PT</a><a lang="en" hreflang="en" href="en/" title="English">EN</a></div>
     <a class="btn small" href="#marcar">Sessão grátis</a>
   </div>
 </header>
@@ -124,7 +129,7 @@
   <form class="f rv" id="bookForm" novalidate>
     <label>Nome<input id="fName" autocomplete="name" placeholder="O teu nome" required></label>
     <div class="two"><label>Ginásio<select id="fUnit"><option>Marés</option><option>Alto Maé</option><option>Matola</option><option>Zimpeto</option></select></label><label>Dia<input id="fDate" type="date"></label></div>
-    <label>Hora preferida<select id="fTime"><option>Manhã</option><option>Tarde</option><option>Noite</option></select></label>
+    <label>Hora preferida<select id="fTime"><option value="manhã">Manhã</option><option value="tarde">Tarde</option><option value="noite">Noite</option></select></label>
     <div class="err" id="err" role="alert"></div>
     <button class="btn" type="submit">Enviar pelo WhatsApp</button>
     <p class="fine">Abre o WhatsApp com a mensagem pronta. Este site não guarda os teus dados.</p>
