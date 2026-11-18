@@ -544,3 +544,35 @@ section.calm{padding:var(--sec) 0}
 
 .soonline{margin-top:1.4rem;display:flex;flex-wrap:wrap;align-items:center;gap:.8rem;font-weight:600}
 .soonline .soon{margin:0}
+
+/* =====================================================================
+   Botões modernos: pílulas planas, sem contorno, hover suave
+   ===================================================================== */
+.btn{border:0;border-radius:999px;padding:.85rem 1.5rem;font-weight:650;background:var(--orange);color:var(--iron);transition:background .25s,transform .2s var(--ease),box-shadow .25s}
+.btn::before{display:none}
+.btn:hover,.btn:focus-visible{background:#FB8A3C;color:var(--iron);transform:translateY(-1px);box-shadow:0 8px 20px rgba(249,115,22,.35)}
+.btn.dark{background:var(--iron);color:var(--white)}
+.btn.dark:hover,.btn.dark:focus-visible{background:#2a2a2a;color:var(--white);box-shadow:0 8px 20px rgba(0,0,0,.25)}
+.btn.ghost{background:rgba(255,255,255,.16);color:var(--white);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.btn.ghost:hover,.btn.ghost:focus-visible{background:rgba(255,255,255,.28);color:var(--white);box-shadow:none}
+.btn.wa{background:#128C3E;color:#fff}
+.btn.wa:hover,.btn.wa:focus-visible{background:#0F7A35;color:#fff;box-shadow:0 8px 20px rgba(18,140,62,.35)}
+.btn.small{padding:.55rem 1.15rem;font-size:.95rem;min-height:40px}
+
+/* cabeçalho: seletor de língua e botão Menu */
+.lang{border:0;background:rgba(255,255,255,.14);border-radius:999px;padding:3px;gap:2px}
+.lang a{border-radius:999px;min-height:32px;padding:.3rem .8rem}
+.lang a[aria-current]{background:var(--white);color:var(--iron)}
+@media(hover:hover){.lang a:not([aria-current]):hover{background:rgba(255,255,255,.2)}}
+.nav .menu-btn{border:0;background:rgba(255,255,255,.16);border-radius:999px;padding:.55rem 1.2rem}
+
+/* restantes botões e etiquetas */
+.wa-float{border:0;box-shadow:0 10px 28px rgba(18,140,62,.45)}
+.quick a{border:0;background:var(--white)}
+@media(hover:hover){.quick a:hover{background:var(--iron);color:var(--white)}}
+.tabs-on .tablist a{border:0;background:var(--white)}
+.tabs-on .tablist a[aria-selected="true"]{background:var(--iron);color:var(--white)}
+@media(hover:hover){.tabs-on .tablist a:hover{background:#dcdcde}.tabs-on .tablist a[aria-selected="true"]:hover{background:var(--iron)}}
+.lang-hint{border:0;border-radius:18px}
+.lang-hint a{border-radius:999px;padding:.45rem .95rem}
+.status{border:0;background:rgba(10,10,10,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
