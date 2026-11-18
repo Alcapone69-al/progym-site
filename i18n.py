@@ -230,4 +230,19 @@ EN = {
 "Falar no WhatsApp": "Chat on WhatsApp",
 "Todos os contactos": "All contacts",
 "Novo ginásio em Xai-Xai.": "New gym in Xai-Xai.",
+
+# ---- página da arena ----
+"Arena do Pro Gym Matola": "Pro Gym Matola Arena",
+"Desporto e lazer para toda a família, no Parque dos Poetas.": "Sport and leisure for the whole family, in Parque dos Poetas.",
+"Mesmo à frente do ginásio": "Right in front of the gym",
+"O que podes fazer na arena": "What you can do at the arena",
+"Padel": "Padel", "Futsal": "Futsal", "Basquetebol": "Basketball", "Parque infantil": "Playground",
+"Treino calisténico ao ar livre": "Outdoor calisthenics",
+"Confirma na receção ou pelo WhatsApp que modalidades estão disponíveis.": "Check with reception or on WhatsApp which activities are available.",
+"Reservar um campo": "Book a court",
+"Fala connosco pelo WhatsApp para saberes a disponibilidade e os valores.": "Message us on WhatsApp to find out about availability and prices.",
+"Arena do Pro Gym Matola | Padel, futsal e mini golfe": "Pro Gym Matola Arena | Padel, futsal and mini golf",
+"A arena desportiva do Pro Gym Matola, no Parque dos Poetas: padel, basquetebol, futsal, mini golfe, parque infantil e treino calisténico ao ar livre.": "The Pro Gym Matola sports arena in Parque dos Poetas: padel, basketball, futsal, mini golf, a playground and outdoor calisthenics.",
+"Ver a página da arena": "See the arena page",
+"Arena Matola": "Matola arena",
 }
