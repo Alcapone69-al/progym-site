@@ -515,20 +515,10 @@ h2{font-size:clamp(1.9rem,4vw,3rem);max-width:20ch}
 .mark{display:none}
 footer{padding:clamp(2.5rem,5vw,4rem) 0 1.8rem}
 
-/* herói da home: cartões dos ginásios */
+/* herói da home */
 .hero::after{background:linear-gradient(180deg,rgba(10,10,10,.55) 0%,rgba(10,10,10,.3) 40%,rgba(10,10,10,.8) 100%)}
-.hero-in{padding:8rem 0 clamp(2rem,4vw,3rem)}
+.hero-in{padding:8rem 0 clamp(2.5rem,5vw,4rem)}
 .hero .lede{margin-top:1rem;font-size:1.15rem;max-width:40ch}
-.hcards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;margin-top:clamp(1.6rem,3.5vw,2.6rem)}
-.hcard{display:flex;flex-direction:column;background:rgba(255,255,255,.94);color:var(--iron);border-radius:20px;overflow:hidden;text-decoration:none;transition:transform .4s var(--ease),box-shadow .4s}
-.hc-img{position:relative;aspect-ratio:4/3;overflow:hidden;background:#222}
-.hc-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
-.hc-tx{display:flex;flex-direction:column;padding:.8rem 1rem 1rem;gap:.1rem}
-.hc-tx b{font-size:1.1rem;font-weight:800}
-.hc-tx small{color:var(--bar);font-size:.88rem;line-height:1.3}
-@media(hover:hover){.hcard:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(0,0,0,.3)}.hcard:hover .hc-img img{transform:scale(1.06)}}
-.hcard:focus-visible{outline-color:var(--white)}
-@media(max-width:860px){.hcards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 /* secções calmas da home */
 section.calm{padding:var(--sec) 0}
@@ -545,3 +535,9 @@ section.calm{padding:var(--sec) 0}
 .plist2{list-style:none;margin-bottom:1.4rem}
 .plist2 li{display:flex;justify-content:space-between;gap:1rem;padding:.7rem 0;border-top:1px solid var(--line)}
 .plist2 b{white-space:nowrap}
+
+/* WhatsApp: verde da marca, texto branco */
+.wa-float{background:#128C3E;color:#fff;border-color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.btn.wa{background:#128C3E;color:#fff;border-color:#128C3E}
+.btn.wa::before{background:var(--iron)}
+.elastic{margin-top:clamp(1.8rem,4vw,3rem)}

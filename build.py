@@ -320,13 +320,9 @@ def elastic_item(g, root, i):
         on, root, g["slug"], e(g["name"]), e(TP(g["area"])), pic(root, g["cover"], cover_alt(g), "(min-width:900px) 60vw, 100vw"), e(TP(g["area"])), e(g["name"]), g["tel"], T("Ver ginásio"), ARROW, e(g["name"]), i + 1)
 
 # ---------------- HOME ----------------
-def hcard(g, root):
-    return """<a class="hcard" href="%sgyms/%s/"><div class="hc-img">%s</div><span class="hc-tx"><b>%s</b><small>%s</small></span></a>""" % (
-        root, g["slug"], pic(root, g["cover"], cover_alt(g), "(min-width:900px) 22vw, 46vw"), e(g["name"]), e(TP(g["area"])))
-
 def home():
     root = ""
-    hcards = "".join(hcard(g, root) for g in GYMS)
+    gcards = "".join(elastic_item(g, root, i) for i, g in enumerate(GYMS))
     h1 = T("Treina onde te der mais jeito.")
     body = """
 <section class="hero" aria-label="%(l_hero)s">
@@ -335,9 +331,13 @@ def home():
     <div class="status hr" id="status" role="status"><span class="dot"></span><span id="statusText">%(chk)s</span></div>
     <h1 class="sp" data-hero aria-label="%(h1l)s">%(h1)s</h1>
     <p class="lede hr">%(lede)s</p>
-    <nav class="hcards hr" aria-label="%(gl)s">%(hcards)s</nav>
   </div>
 </section>
+
+<section id="ginasios"><div class="wrap">
+  <h2 class="sp">%(gh2)s</h2><p class="sub rv">%(gsub)s</p>
+</div>
+<div class="elastic rv" data-elastic>%(gcards)s</div></section>
 
 <section class="calm" id="sobre"><div class="wrap about">
   <div>
@@ -364,14 +364,14 @@ def home():
   <h2 class="sp">%(ch)s</h2>
   <p class="sub rv">%(csub)s</p>
   <div class="actions rv" style="margin-top:1.8rem">
-    <a class="btn" href="%(wa)s" target="_blank" rel="noopener">%(cb)s %(arr)s</a>
+    <a class="btn wa" href="%(wa)s" target="_blank" rel="noopener">%(cb)s %(arr)s</a>
     <a class="btn dark" href="contact/">%(cc)s</a>
   </div>
 </div></section>
 """ % dict(l_hero=T("Apresentação"), chk=T("A verificar o horário…"), h1l=e(h1), h1=sp(h1),
            lede=T("Quatro ginásios em Maputo e Matola. A primeira sessão é por nossa conta."),
            heroimg=pic(root, "hero/hero-2.jpg", T("Sala de treino do Pro Gym"), "100vw", eager=True), arr=ARROW,
-           gl=T("Os nossos ginásios"), hcards=hcards,
+           gh2=sp(T("Encontra o teu ginásio")), gsub=T("Marés, Alto Maé, Matola e Zimpeto, abertos de segunda a domingo. Passa o rato ou toca num ginásio para o ver."), gcards=gcards,
            ab=sp(T("Sobre o Pro Gym")),
            absub=T("Ginásios em Maputo e Matola, abertos de segunda a domingo. Aulas de grupo, personal trainer, fisioterapia e nutrição, ao melhor preço e com qualidade."),
            q1=T("Preços"), q2=T("Aulas"), q3=T("Serviços"), q4=T("App Pro Gym"),
