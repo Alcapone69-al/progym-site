@@ -320,104 +320,65 @@ def elastic_item(g, root, i):
         on, root, g["slug"], e(g["name"]), e(TP(g["area"])), pic(root, g["cover"], cover_alt(g), "(min-width:900px) 60vw, 100vw"), e(TP(g["area"])), e(g["name"]), g["tel"], T("Ver ginásio"), ARROW, e(g["name"]), i + 1)
 
 # ---------------- HOME ----------------
+def hcard(g, root):
+    return """<a class="hcard" href="%sgyms/%s/"><div class="hc-img">%s</div><span class="hc-tx"><b>%s</b><small>%s</small></span></a>""" % (
+        root, g["slug"], pic(root, g["cover"], cover_alt(g), "(min-width:900px) 22vw, 46vw"), e(g["name"]), e(TP(g["area"])))
+
 def home():
     root = ""
-    gcards = "".join(elastic_item(g, root, i) for i, g in enumerate(GYMS))
+    hcards = "".join(hcard(g, root) for g in GYMS)
     h1 = T("Treina onde te der mais jeito.")
-    stm = T("Quatro ginásios em Maputo e Matola. Aulas, personal trainer, fisioterapia e nutrição. A primeira sessão é por nossa conta.")
     body = """
 <section class="hero" aria-label="%(l_hero)s">
   <div class="hero-media">%(heroimg)s</div>
   <div class="hero-in">
     <div class="status hr" id="status" role="status"><span class="dot"></span><span id="statusText">%(chk)s</span></div>
     <h1 class="sp" data-hero aria-label="%(h1l)s">%(h1)s</h1>
-    <div class="hero-foot">
-      <div>
-        <p class="lede">%(lede)s</p>
-        <div class="actions hr"><a class="btn" href="#marcar">%(b1)s %(arr)s</a><a class="btn ghost" href="pricing/">%(b2)s</a></div>
-      </div>
-      <a class="cue hr" href="#historia" aria-label="%(cue)s"><i></i>Scroll</a>
-    </div>
+    <p class="lede hr">%(lede)s</p>
+    <nav class="hcards hr" aria-label="%(gl)s">%(hcards)s</nav>
   </div>
-  <i class="hero-bar" aria-hidden="true"></i>
 </section>
 
-<section class="stmt-sec" id="historia"><div class="wrap">
-  <p class="stmt" aria-label="%(stml)s">%(stmt)s</p>
-</div></section>
-
-<section id="ginasios"><div class="wrap">
-  <h2 class="sp">%(gh2)s</h2><p class="sub rv">%(gsub)s</p>
-</div>
-<div class="elastic rv" data-elastic>%(gcards)s</div></section>
-
-<section class="dark-sec" id="planos" data-sheet><div class="wrap">
-  <h2 class="sp">%(p2)s</h2>
-  <p class="sub rv">%(psub)s</p>
-  <div class="pgrid">
-    <div class="plan big rv"><h3>%(m)s</h3><div class="price">%(pm)s<small>MT</small></div><p class="note">%(mn)s</p></div>
-    <div class="plan best rv"><span class="tag">%(best)s</span><h3>%(an)s</h3><div class="price">%(pa)s<small>MT</small></div><p class="note">%(ann)s</p></div>
-    <ul class="plist">
-      <li class="rv"><span><b>%(est)s</b><small>%(est2)s</small></span><span class="pv">%(pe)s<small> MT</small></span></li>
-      <li class="rv"><span><b>%(sen)s</b><small>%(sen2)s</small></span><span class="pv">%(ps)s<small> MT</small></span></li>
-      <li class="rv"><span><b>%(fam)s</b><small>%(fam2)s</small></span><span class="pv">%(pf)s<small> MT</small></span></li>
+<section class="calm" id="sobre"><div class="wrap about">
+  <div>
+    <h2 class="sp">%(ab)s</h2>
+    <p class="sub rv">%(absub)s</p>
+    <ul class="quick rv">
+      <li><a href="pricing/">%(q1)s</a></li><li><a href="plans/">%(q2)s</a></li><li><a href="services/">%(q3)s</a></li><li><a href="app/">%(q4)s</a></li>
     </ul>
   </div>
-  <div class="actions rv" style="margin-top:2.2rem"><a class="btn" href="pricing/">%(allp)s %(arr)s</a></div>
-</div></section>
-
-<section id="aulas"><div class="wrap">
-  <h2 class="sp">%(a2)s</h2>
-  <p class="sub rv">%(asub)s</p>
-  <div class="cls-grid">
-    <a class="cls" href="plans/"><div class="pw">%(i1)s</div><div class="tx"><h3>Spinn 50</h3><p>%(c1)s</p></div></a>
-    <a class="cls" href="plans/"><div class="pw">%(i2)s</div><div class="tx"><h3>%(c2n)s</h3><p>%(c2)s</p></div></a>
-    <a class="cls" href="plans/"><div class="pw">%(i3)s</div><div class="tx"><h3>CrossTrain</h3><p>%(c3)s</p></div></a>
+  <div class="pcard rv">
+    <h3>%(m)s</h3>
+    <div class="price">%(pm)s<small>MT</small></div>
+    <ul class="plist2">
+      <li><span>%(an)s</span><b>%(pa)s MT</b></li>
+      <li><span>%(est)s</span><b>%(pe)s MT</b></li>
+      <li><span>%(sen)s</span><b>%(ps)s MT</b></li>
+      <li><span>%(fam)s</span><b>%(pf)s MT</b></li>
+    </ul>
+    <a class="btn dark" href="pricing/">%(allp)s %(arr)s</a>
   </div>
-  <div class="actions rv" style="margin-top:2.2rem"><a class="btn dark" href="plans/">%(allc)s %(arr)s</a></div>
 </div></section>
 
-<section class="paper" id="servicos"><div class="wrap">
-  <h2 class="sp">%(s2)s</h2>
-  <ul class="srows">
-    <li class="rv"><a href="services/personal-training/"><h3>%(sv1)s</h3><p>%(sd1)s</p><span class="go">%(more)s</span><span class="thumb">%(t1)s</span></a></li>
-    <li class="rv"><a href="services/physiotherapy/"><h3>%(sv2)s</h3><p>%(sd2)s</p><span class="go">%(more)s</span><span class="thumb">%(t2)s</span></a></li>
-    <li class="rv"><a href="services/nutrition/"><h3>%(sv3)s</h3><p>%(sd3)s</p><span class="go">%(more)s</span><span class="thumb">%(t3)s</span></a></li>
-    <li class="rv"><a href="services/#arena"><h3>%(sv4)s</h3><p>%(sd4)s</p><span class="go">%(more)s</span><span class="thumb">%(t4)s</span></a></li>
-  </ul>
+<section class="calm contact" id="marcar"><div class="wrap">
+  <h2 class="sp">%(ch)s</h2>
+  <p class="sub rv">%(csub)s</p>
+  <div class="actions rv" style="margin-top:1.8rem">
+    <a class="btn" href="%(wa)s" target="_blank" rel="noopener">%(cb)s %(arr)s</a>
+    <a class="btn dark" href="contact/">%(cc)s</a>
+  </div>
 </div></section>
-
-<section class="dark-sec" id="app" data-sheet><div class="wrap app-grid">
-  <div><span class="soon rv">%(soon)s</span><h2 class="sp">%(ap)s</h2>
-  <p class="sub rv">%(apsub)s</p>
-  <div class="actions rv" style="margin-top:1.8rem"><a class="btn" href="app/">%(apb)s %(arr)s</a></div></div>
-  %(phone)s
-</div></section>
-
-%(book)s
-%(faq)s
-""" % dict(l_hero=T("Apresentação"), chk=T("A verificar o horário…"), h1l=e(h1), h1=sp(h1), lede=T("Quatro ginásios em Maputo e Matola, aulas de grupo, personal trainer, fisioterapia e nutrição. A primeira sessão é por nossa conta."),
-           b1=T("Marcar sessão grátis"), b2=T("Ver preços"), cue=T("Descer para o conteúdo"), stml=e(stm), stmt=stmt_words(stm),
+""" % dict(l_hero=T("Apresentação"), chk=T("A verificar o horário…"), h1l=e(h1), h1=sp(h1),
+           lede=T("Quatro ginásios em Maputo e Matola. A primeira sessão é por nossa conta."),
            heroimg=pic(root, "hero/hero-2.jpg", T("Sala de treino do Pro Gym"), "100vw", eager=True), arr=ARROW,
-           gh2=sp(T("Encontra o teu ginásio")), gsub=T("Marés, Alto Maé, Matola e Zimpeto, abertos de segunda a domingo. Passa o rato ou toca num ginásio para o ver."), gcards=gcards,
-           p2=sp(T("Preços sem letras pequenas")), psub=T("Há ainda planos trimestral e semestral, entradas diárias e semanais. Vê a tabela completa."),
-           m=T("Mensalidade"), pm=N("2.990"), mn=T("Todos os ginásios"), best=T("Melhor valor"), an=T("Anual"), pa=N("24.990"), ann=T("3,6 meses grátis. Poupas 10.890 MT."),
-           est=T("Estudante"), est2=T("1 ginásio, até 21 anos"), pe=N("1.500"), sen=T("Sénior"), sen2=T("65+ anos"), ps=N("1.990"), fam=T("Família"), fam2=T("Pais e filhos"), pf=N("2.690"),
-           allp=T("Ver todos os preços"),
-           a2=sp(T("Aulas que te fazem aparecer")), asub=T("Aulas de grupo com instrutor, para quem treina melhor acompanhado."),
-           c1=T("Ciclismo indoor de alta intensidade para melhorar a resistência e queimar calorias."), c2n=T("Aeróbica"),
-           c2=T("Treino aeróbico rítmico com movimentos dinâmicos para aumentar a resistência física."),
-           c3=T("Treino funcional de corpo inteiro que desenvolve força, agilidade e condicionamento."), allc=T("Ver horários das aulas"),
-           i1=pic(root, "classes/spinn.jpg", T("Aula de Spinn 50 no Pro Gym"), "(min-width:900px) 58vw, 100vw"),
-           i2=pic(root, "classes/aerobics.jpg", T("Aula de aeróbica no Pro Gym"), "(min-width:900px) 40vw, 100vw"),
-           i3=pic(root, "classes/crosstrain.jpg", T("Aula de CrossTrain no Pro Gym"), "(min-width:900px) 75vw, 100vw"),
-           s2=sp(T("Mais do que sala de musculação")), more=T("Saber mais"),
-           sv1=T("Personal trainer"), sd1=T("Treino com acompanhamento individual."), sv2=T("Fisioterapia"), sd2=T("Recupera de lesões e treina com segurança."),
-           sv3=T("Nutrição"), sd3=T("Orientação alimentar para o teu objetivo."), sv4=T("Padel, mini golf e futsal"), sd4=T("Desporto e lazer na arena do Pro Gym Matola."),
-           t1=pic(root, "services/personal-trainer.jpg", "", "170px"), t2=pic(root, "services/fisoterapia.jpg", "", "170px"),
-           t3=pic(root, "services/nutricao.jpg", "", "170px"), t4=pic(root, "services/padel.jpg", "", "170px"),
-           soon=T("Brevemente"), ap=sp(T("A app do Pro Gym")), apsub=T("Regista o teu treino, acompanha o teu progresso e compete com os amigos do teu ginásio. O cartão de acesso e as mensalidades continuam como hoje."),
-           apb=T("Conhecer a app"), phone=phone_demo(cap=True), book=booking_section(root), faq=faq_section())
+           gl=T("Os nossos ginásios"), hcards=hcards,
+           ab=sp(T("Sobre o Pro Gym")),
+           absub=T("Ginásios em Maputo e Matola, abertos de segunda a domingo. Aulas de grupo, personal trainer, fisioterapia e nutrição, ao melhor preço e com qualidade."),
+           q1=T("Preços"), q2=T("Aulas"), q3=T("Serviços"), q4=T("App Pro Gym"),
+           m=T("Mensalidade"), pm=N("2.990"), an=T("Anual"), pa=N("24.990"), est=T("Estudante"), pe=N("1.500"), sen=T("Sénior"), ps=N("1.990"),
+           fam=T("Família"), pf=N("2.690"), allp=T("Ver todos os preços"),
+           ch=sp(T("Marca a tua primeira sessão")), csub=T("É grátis. Fala connosco pelo WhatsApp e a receção confirma o dia e a hora."),
+           wa=wa("Olá, gostaria de marcar a primeira sessão grátis no Pro Gym."), cb=T("Falar no WhatsApp"), cc=T("Todos os contactos"))
     write("", layout("", T("Pro Gym Fitness | Ginásios em Maputo e Matola"), T("Quatro ginásios em Maputo e Matola: Marés, Alto Maé, Matola e Zimpeto. Aulas, personal trainer, fisioterapia, nutrição e padel. Primeira sessão grátis."), body, jsonld=org_ld()))
     PAGES.append(("", True))
 

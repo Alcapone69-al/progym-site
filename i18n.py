@@ -219,4 +219,14 @@ EN = {
 "Olá! Gostaria de marcar uma consulta de nutrição no Pro Gym.": "Hello! I'd like to book a nutrition consultation at Pro Gym.",
 "Olá! Gostaria de reservar um campo na arena do Pro Gym Matola.": "Hello! I'd like to book a court at the Pro Gym Matola arena.",
 "Olá! Gostaria de saber o horário das aulas no Pro Gym Zimpeto.": "Hello! I'd like to know the class timetable at Pro Gym Zimpeto.",
+
+# ---- home simplificada ----
+"Quatro ginásios em Maputo e Matola. A primeira sessão é por nossa conta.": "Four gyms in Maputo and Matola. Your first session is on us.",
+"Sobre o Pro Gym": "About Pro Gym",
+"Ginásios em Maputo e Matola, abertos de segunda a domingo. Aulas de grupo, personal trainer, fisioterapia e nutrição, ao melhor preço e com qualidade.": "Gyms in Maputo and Matola, open Monday to Sunday. Group classes, personal training, physiotherapy and nutrition, at the best price and quality.",
+"Marca a tua primeira sessão": "Book your first session",
+"É grátis. Fala connosco pelo WhatsApp e a receção confirma o dia e a hora.": "It is free. Message us on WhatsApp and reception will confirm the day and time.",
+"Olá, gostaria de marcar a primeira sessão grátis no Pro Gym.": "Hello, I would like to book my free first session at Pro Gym.",
+"Falar no WhatsApp": "Chat on WhatsApp",
+"Todos os contactos": "All contacts",
 }
