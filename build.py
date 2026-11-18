@@ -48,7 +48,7 @@ GYMS = [
   tel="+258 85 550 5550",
   addr="Centro Comercial Marés, Av. da Marginal, Maputo nº 9519, 1100 Maputo, Moçambique",
   desc="Localizado no coração do Centro Comercial Marés, em Costa do Sol, o Pro Gym Marés é o seu espaço de fitness familiar onde resultados, saúde e diversão se encontram. Aproveite equipamentos modernos, treinadores profissionais e uma comunidade acolhedora – tudo a poucos passos das suas lojas e restaurantes favoritos.",
-  cover="gyms/mares/drone.jpg", photos=["drone","side","door","store","mares-3","cardio"], plan="plans/plano-mares.jpg"),
+  cover="gyms/mares/drone.jpg", photos=["drone","door","store","mares-3","cardio"], plan="plans/plano-mares.jpg"),
  dict(slug="alto-mae", name="Alto Maé", area="Alto Maé, Maputo",
   tel="+258 85 552 5552",
   addr="Av. da Tanzania nº 3533, Pro Gym - 1º Andar, Maputo 1100, Moçambique",
