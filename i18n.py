@@ -229,4 +229,5 @@ EN = {
 "Olá, gostaria de marcar a primeira sessão grátis no Pro Gym.": "Hello, I would like to book my free first session at Pro Gym.",
 "Falar no WhatsApp": "Chat on WhatsApp",
 "Todos os contactos": "All contacts",
+"Novo ginásio em Xai-Xai.": "New gym in Xai-Xai.",
 }

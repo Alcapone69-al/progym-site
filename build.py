@@ -337,7 +337,8 @@ def home():
 <section id="ginasios"><div class="wrap">
   <h2 class="sp">%(gh2)s</h2><p class="sub rv">%(gsub)s</p>
 </div>
-<div class="elastic rv" data-elastic>%(gcards)s</div></section>
+<div class="elastic rv" data-elastic>%(gcards)s</div>
+<div class="wrap"><p class="soonline rv"><span class="soon">%(soon)s</span>%(xx)s</p></div></section>
 
 <section class="calm" id="sobre"><div class="wrap about">
   <div>
@@ -371,7 +372,7 @@ def home():
 """ % dict(l_hero=T("Apresentação"), chk=T("A verificar o horário…"), h1l=e(h1), h1=sp(h1),
            lede=T("Quatro ginásios em Maputo e Matola. A primeira sessão é por nossa conta."),
            heroimg=pic(root, "hero/hero-2.jpg", T("Sala de treino do Pro Gym"), "100vw", eager=True), arr=ARROW,
-           gh2=sp(T("Encontra o teu ginásio")), gsub=T("Marés, Alto Maé, Matola e Zimpeto, abertos de segunda a domingo. Passa o rato ou toca num ginásio para o ver."), gcards=gcards,
+           soon=T("Brevemente"), xx=T("Novo ginásio em Xai-Xai."), gh2=sp(T("Encontra o teu ginásio")), gsub=T("Marés, Alto Maé, Matola e Zimpeto, abertos de segunda a domingo. Passa o rato ou toca num ginásio para o ver."), gcards=gcards,
            ab=sp(T("Sobre o Pro Gym")),
            absub=T("Ginásios em Maputo e Matola, abertos de segunda a domingo. Aulas de grupo, personal trainer, fisioterapia e nutrição, ao melhor preço e com qualidade."),
            q1=T("Preços"), q2=T("Aulas"), q3=T("Serviços"), q4=T("App Pro Gym"),

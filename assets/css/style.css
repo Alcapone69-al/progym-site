@@ -541,3 +541,6 @@ section.calm{padding:var(--sec) 0}
 .btn.wa{background:#128C3E;color:#fff;border-color:#128C3E}
 .btn.wa::before{background:var(--iron)}
 .elastic{margin-top:clamp(1.8rem,4vw,3rem)}
+
+.soonline{margin-top:1.4rem;display:flex;flex-wrap:wrap;align-items:center;gap:.8rem;font-weight:600}
+.soonline .soon{margin:0}
