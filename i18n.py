@@ -106,7 +106,7 @@ EN = {
 "Pro Gym %s | Ginásio em %s": "Pro Gym %s | Gym in %s",
 "Pro Gym %s: %s Morada, telefone, horário e fotos.": "Pro Gym %s: %s Address, phone, opening hours and photos.",
 "Foto %d": "Photo %d",
-"vista aérea": "aerial view", "vista lateral": "side view", "entrada": "entrance", "loja": "shop", "zona de cardio": "cardio area",
+"fachada": "facade", "área de treino funcional": "functional training area", "máquinas de força": "strength machines", "sala de treino": "training room", "zona de musculação": "weights area", "zona de boxe": "boxing area", "vista aérea": "aerial view", "vista lateral": "side view", "entrada": "entrance", "loja": "shop", "zona de cardio": "cardio area",
 "receção": "reception", "sala de spinning": "spinning room", "área de CrossFit": "CrossFit area", "vista do ginásio": "view of the gym",
 "Segunda a sexta": "Monday to Friday", "Sábado": "Saturday", "Domingo": "Sunday", "Feriados": "Public holidays", "%s às %s": "%s to %s",
 "Localizado no coração do Centro Comercial Marés, em Costa do Sol, o Pro Gym Marés é o seu espaço de fitness familiar onde resultados, saúde e diversão se encontram. Aproveite equipamentos modernos, treinadores profissionais e uma comunidade acolhedora – tudo a poucos passos das suas lojas e restaurantes favoritos.":

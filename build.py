@@ -66,7 +66,11 @@ GYMS = [
   cover="gyms/zimpeto/side.jpg", photos=["side","door","spinning","crossfit","zimpeto-3","zimpeto-4","zimpeto-5","zimpeto-6"], plan=None),
 ]
 ALT = {"drone": "vista aérea", "side": "vista lateral", "door": "entrada", "store": "loja",
-       "cardio": "zona de cardio", "reception": "receção", "spinning": "sala de spinning", "crossfit": "área de CrossFit"}
+       "cardio": "zona de cardio", "reception": "receção", "spinning": "sala de spinning", "crossfit": "área de CrossFit",
+       "matola-7": "vista aérea", "matola-1": "fachada", "matola-2": "entrada", "matola-3": "zona de cardio",
+       "matola-4": "área de treino funcional", "matola-5": "máquinas de força", "matola-6": "sala de spinning",
+       "mares-3": "sala de treino", "zimpeto-3": "zona de cardio", "zimpeto-4": "zona de musculação",
+       "zimpeto-5": "máquinas de força", "zimpeto-6": "zona de boxe"}
 
 def e(s): return html.escape(s, quote=True)
 def tel(s): return "tel:" + s.replace(" ", "")
