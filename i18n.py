@@ -245,4 +245,5 @@ EN = {
 "A arena desportiva do Pro Gym Matola, no Parque dos Poetas: padel, basquetebol, futsal, mini golfe, parque infantil e treino calisténico ao ar livre.": "The Pro Gym Matola sports arena in Parque dos Poetas: padel, basketball, futsal, mini golf, a playground and outdoor calisthenics.",
 "Ver a página da arena": "See the arena page",
 "Arena Matola": "Matola arena",
+"A arena vai estar disponível também noutros ginásios Pro Gym.": "The arena will also be available at other Pro Gym gyms.",
 }

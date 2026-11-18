@@ -530,12 +530,13 @@ def services():
 <div style="grid-column:span 1">%s<p class="sub" style="margin-top:.6rem">Padel</p></div>
 <div style="grid-column:span 1;margin-top:3rem">%s<p class="sub" style="margin-top:.6rem">%s</p></div>
 <div style="grid-column:span 1">%s<p class="sub" style="margin-top:.6rem">Futsal</p></div></div>
+<p class="soonline rv" style="margin-top:2rem"><span class="soon">%s</span>%s</p>
 <div class="actions rv" style="margin-top:2rem"><a class="btn" href="../arena/">%s</a><a class="btn ghost" href="%s" target="_blank" rel="noopener">%s</a></div></div></section>""" % (
         sp(T("A arena do Pro Gym Matola")), T("Mesmo à frente do ginásio, no Parque dos Poetas, na Matola: campos de padel, basquetebol e futsal, mini golfe, parque infantil e a única área de treino calisténico ao ar livre em Moçambique."),
         mask(root, "services/padel.jpg", T("Campo de padel na arena do Pro Gym Matola"), "33vw", True, ' style="aspect-ratio:3/4"'),
         mask(root, "services/mini-golf.jpg", T("Mini golfe na arena do Pro Gym Matola"), "33vw", True, ' style="aspect-ratio:3/4"'), T("Mini golf"),
         mask(root, "services/futsal.jpg", T("Campo de futsal na arena do Pro Gym Matola"), "33vw", True, ' style="aspect-ratio:3/4"'),
-        T("Ver a página da arena"), wa("Olá! Gostaria de reservar um campo na arena do Pro Gym Matola."), T("Reservar campo pelo WhatsApp"))
+        T("Brevemente"), T("A arena vai estar disponível também noutros ginásios Pro Gym."), T("Ver a página da arena"), wa("Olá! Gostaria de reservar um campo na arena do Pro Gym Matola."), T("Reservar campo pelo WhatsApp"))
     body = page_hero(root, [(T("Início"), ""), (T("Serviços"), None)], T("Serviços"), T("Mais do que sala de musculação."), "services/personal-trainer.jpg", T("Personal trainer no Pro Gym")) + '<section class="tight"><div class="wrap"><ul class="srows" style="margin-top:0">%s</ul></div></section>%s' % (lis, arena)
     write("services", layout("services/", T("Serviços | Pro Gym Fitness"), T("Personal trainer, fisioterapia e nutrição, e a arena desportiva do Pro Gym Matola com padel, futsal e mini golfe."), body, og_img="services/personal-trainer.jpg"))
     PAGES.append(("services/", True))
@@ -581,6 +582,7 @@ def arena():
 <section class="paper tight"><div class="wrap"><h2 class="sp">%(h3)s</h2>
   <div class="photos" style="grid-template-columns:repeat(3,1fr)">%(shots)s</div>
   <div class="chips rv" style="margin-top:2rem">%(chips)s</div>
+  <p class="soonline rv"><span class="soon">%(soon)s</span>%(more)s</p>
   <p class="fineprint rv">%(note)s</p></div></section>
 <section class="tight"><div class="wrap"><h2 class="sp">%(h4)s</h2>
   <p class="sub rv">%(s4)s</p>
@@ -588,7 +590,7 @@ def arena():
 """ % dict(h2=sp(T("Mesmo à frente do ginásio")), d=e(T("Mesmo à frente do ginásio, no Parque dos Poetas, na Matola: campos de padel, basquetebol e futsal, mini golfe, parque infantil e a única área de treino calisténico ao ar livre em Moçambique.")),
            wa=wa("Olá! Gostaria de reservar um campo na arena do Pro Gym Matola."), b1=T("Reservar campo pelo WhatsApp"), map=maps("Pro Gym Matola, " + g["addr"]), b2=T("Como chegar"),
            t1=T("Morada"), addr=e(TP(g["addr"])), t2=T("Telefone"), tl=tel(g["tel"]), tel=g["tel"], waid=WA, atel=ADMIN_TEL,
-           h3=sp(T("O que podes fazer na arena")), shots=shots, chips=chips, note=T("Confirma na receção ou pelo WhatsApp que modalidades estão disponíveis."),
+           soon=T("Brevemente"), more=T("A arena vai estar disponível também noutros ginásios Pro Gym."), h3=sp(T("O que podes fazer na arena")), shots=shots, chips=chips, note=T("Confirma na receção ou pelo WhatsApp que modalidades estão disponíveis."),
            h4=sp(T("Reservar um campo")), s4=T("Fala connosco pelo WhatsApp para saberes a disponibilidade e os valores."), gym=root, b3=T("Ver o Pro Gym Matola"))
     write("arena", layout("arena/", T("Arena do Pro Gym Matola | Padel, futsal e mini golfe"), T("A arena desportiva do Pro Gym Matola, no Parque dos Poetas: padel, basquetebol, futsal, mini golfe, parque infantil e treino calisténico ao ar livre."), body, og_img=g["cover"]))
     PAGES.append(("arena/", True))

@@ -576,3 +576,5 @@ section.calm{padding:var(--sec) 0}
 .lang-hint{border:0;border-radius:18px}
 .lang-hint a{border-radius:999px;padding:.45rem .95rem}
 .status{border:0;background:rgba(10,10,10,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+
+.soon{border-radius:999px;padding:.3rem .9rem}
