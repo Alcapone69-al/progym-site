@@ -19,8 +19,6 @@ html.t-uxpro{
 .t-uxpro .plan,.t-uxpro .plist li,.t-uxpro .cpanel{background:var(--card)}
 .t-uxpro .plan.best{background:var(--orange)}
 .t-uxpro .dark-sec{border-radius:28px}
-.t-uxpro .status.open .dot{background:var(--cta);box-shadow:0 0 0 4px rgba(34,197,94,.28)}
-.t-uxpro .soon{background:var(--cta);color:var(--on-cta)}
 .t-uxpro .lang a{min-height:44px}
 .t-uxpro .nav .menu-btn{min-height:44px}
 .t-uxpro :focus-visible{outline-color:var(--cta)}
