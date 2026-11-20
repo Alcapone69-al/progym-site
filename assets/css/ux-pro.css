@@ -31,7 +31,7 @@ html.t-uxpro{
 @media(max-width:600px){.tema-pill{left:1rem;transform:none;bottom:1rem;max-width:calc(100vw - 8.5rem);overflow:hidden;text-overflow:ellipsis}}
 
 /* escala dos títulos ajustada à largura do Barlow Condensed (mais largo que o tipo original) */
-.t-uxpro .hero h1{font-size:clamp(3.2rem,10.2vw,9.2rem);max-width:15ch}
+.t-uxpro .hero h1{font-size:clamp(3rem,min(8.2vw,15vh),7.6rem);max-width:15ch}
 .t-uxpro .phero h1{font-size:clamp(3rem,8.6vw,7.2rem);max-width:16ch}
 .t-uxpro h2{font-size:clamp(2.5rem,6.3vw,5.3rem)}
 .t-uxpro .info h2{font-size:clamp(2.2rem,4.5vw,3.6rem)}
