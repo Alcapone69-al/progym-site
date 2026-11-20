@@ -105,6 +105,13 @@ if(!EN&&!LS.get('pg-lang')){
   }
 }
 
+// pré-visualização do tema UX Pro Max: botão para voltar ao original
+if(root.classList.contains('t-uxpro')){
+  var tp=d.createElement('a');tp.className='tema-pill';tp.href='?tema=off';
+  tp.innerHTML=S('<b>Tema UX Pro</b> · ver original','<b>UX Pro theme</b> · see original');
+  d.body.appendChild(tp);
+}
+
 // barra de progresso ao navegar entre páginas
 d.addEventListener('click',function(e){
   var a=e.target.closest&&e.target.closest('a[href]');

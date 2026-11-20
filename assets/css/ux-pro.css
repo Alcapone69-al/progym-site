@@ -1,0 +1,49 @@
+/* Pré-visualização do tema "UX Pro Max" (sistema de design gerado para um ginásio).
+   Só é carregado com ?tema=uxpro (ver o script no <head>). Para voltar ao original: ?tema=off */
+@font-face{font-family:"Barlow Condensed";font-weight:700 900;font-style:normal;font-display:swap;src:url(../fonts/barlow-condensed-latin-800-normal.woff2) format("woff2")}
+@font-face{font-family:"Barlow";font-weight:400;font-style:normal;font-display:swap;src:url(../fonts/barlow-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Barlow";font-weight:500;font-style:normal;font-display:swap;src:url(../fonts/barlow-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"Barlow";font-weight:600;font-style:normal;font-display:swap;src:url(../fonts/barlow-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:"Barlow";font-weight:700;font-style:normal;font-display:swap;src:url(../fonts/barlow-latin-700-normal.woff2) format("woff2")}
+
+html.t-uxpro{
+  --iron:#1F2937;            /* fundo escuro (slate) */
+  --chalk:#F1F5F9; --paper:#F8FAFC; --line:#CBD5E1; --bar:#475569; --ink2:#334155; --mute:#CBD5E1;
+  --cta:#22C55E; --on-cta:#0F172A; --card:#313742;
+  --display:"Barlow Condensed","Arial Narrow",Impact,sans-serif;
+  --body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+.t-uxpro body{font-size:1.125rem;line-height:1.6}
+.t-uxpro h1,.t-uxpro h2,.t-uxpro .stmt,.t-uxpro .price{letter-spacing:-.005em}
+/* CTA verde (accent do sistema), texto escuro com contraste > 7:1 */
+.t-uxpro .btn:not(.ghost):not(.dark){background:var(--cta);color:var(--on-cta);border-color:var(--on-cta)}
+.t-uxpro .btn:not(.ghost):not(.dark)::before{background:var(--on-cta)}
+.t-uxpro .orange-sec .btn:not(.ghost){background:var(--on-cta);color:#fff;border-color:var(--on-cta)}
+.t-uxpro .orange-sec .btn:not(.ghost)::before{background:#fff}
+@media(hover:hover){.t-uxpro .orange-sec .btn:not(.ghost):hover{color:var(--on-cta)}}
+.t-uxpro .btn.dark::before{background:var(--cta)}
+.t-uxpro .nav>.btn.small{background:var(--cta);color:var(--on-cta);border-color:var(--cta)}
+/* blocos: cartões mais claros que o fundo, cantos maiores, cor de bloco */
+.t-uxpro .plan,.t-uxpro .plist li,.t-uxpro .cpanel{background:var(--card)}
+.t-uxpro .plan.best{background:var(--orange)}
+.t-uxpro .dark-sec{border-radius:28px}
+.t-uxpro .status.open .dot{background:var(--cta);box-shadow:0 0 0 4px rgba(34,197,94,.28)}
+.t-uxpro .soon{background:var(--cta);color:var(--on-cta)}
+.t-uxpro .lang a[aria-current]{background:var(--cta);color:var(--on-cta)}
+.t-uxpro .lang a{min-height:44px}
+.t-uxpro .nav .menu-btn{min-height:44px}
+.t-uxpro :focus-visible{outline-color:var(--cta)}
+
+/* aviso para voltar ao original */
+.tema-pill{position:fixed;left:50%;bottom:1rem;transform:translateX(-50%);z-index:85;background:#0F172A;color:#fff;border:1.5px solid var(--cta,#22C55E);border-radius:999px;padding:.55rem 1rem;font:600 .9rem var(--body);text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.35);white-space:nowrap}
+.tema-pill b{color:var(--cta,#22C55E)}
+@media(max-width:600px){.tema-pill{left:1rem;transform:none;bottom:1rem;max-width:calc(100vw - 8.5rem);overflow:hidden;text-overflow:ellipsis}}
+
+/* escala dos títulos ajustada à largura do Barlow Condensed (mais largo que o tipo original) */
+.t-uxpro .hero h1{font-size:clamp(3.2rem,10.2vw,9.2rem);max-width:15ch}
+.t-uxpro .phero h1{font-size:clamp(3rem,8.6vw,7.2rem);max-width:16ch}
+.t-uxpro h2{font-size:clamp(2.5rem,6.3vw,5.3rem)}
+.t-uxpro .info h2{font-size:clamp(2.2rem,4.5vw,3.6rem)}
+.t-uxpro .book h2{font-size:clamp(2.6rem,7vw,6rem)}
+.t-uxpro .stmt{font-size:clamp(2rem,5.4vw,4.7rem)}
+.t-uxpro .plan.big .price{font-size:clamp(4.4rem,11vw,9rem)}

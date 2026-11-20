@@ -179,6 +179,7 @@ def layout(path, title, desc, body, jsonld=None, og_img="hero/hero-2.jpg", noind
 <link rel="preload" href="%(aroot)sassets/fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 %(pre)s
 <link rel="stylesheet" href="%(aroot)sassets/css/style.css">
+<script>(function(){try{var q=location.search.match(/[?&]tema=([a-z]+)/);if(q){if(q[1]==='uxpro')sessionStorage.setItem('pg-tema','uxpro');else sessionStorage.removeItem('pg-tema')}if(sessionStorage.getItem('pg-tema')==='uxpro'){var h=document.documentElement;h.classList.add('t-uxpro');var l=document.createElement('link');l.rel='stylesheet';l.href='%(aroot)sassets/css/ux-pro.css';document.head.appendChild(l)}}catch(e){}})();</script>
 %(ld)s
 </head>
 <body>
