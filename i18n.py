@@ -246,4 +246,11 @@ EN = {
 "Ver a página da arena": "See the arena page",
 "Arena Matola": "Matola arena",
 "A arena vai estar disponível também noutros ginásios Pro Gym.": "The arena will also be available at other Pro Gym gyms.",
+"Traz um membro, treina grátis": "Bring a member, train free",
+"Por cada pessoa que trouxeres ao ginásio ganhas 1 semana grátis.": "For every person you bring to the gym, you get 1 free week.",
+"membro trazido": "member brought", "membros trazidos": "members brought",
+"1 semana grátis": "1 free week", "2 semanas grátis": "2 free weeks", "3 semanas grátis": "3 free weeks", "4 semanas: 1 mês grátis": "4 weeks: 1 month free",
+"Olá! Quero saber como funciona a promoção de trazer um membro e ganhar semanas grátis.": "Hi! I'd like to know how the promotion works: bring a member and get free weeks.",
+"Como ganho semanas grátis?": "How do I earn free weeks?",
+"Traz um membro ao ginásio e ganhas 1 semana grátis. Se trouxeres 4 membros, ganhas 4 semanas, ou seja, 1 mês grátis.": "Bring a member to the gym and get 1 free week. Bring 4 members and you get 4 weeks, which is 1 month free.",
 }

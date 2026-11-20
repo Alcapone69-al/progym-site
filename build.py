@@ -281,6 +281,7 @@ FAQ = [
  ("Há preços para estudantes, famílias e seniores?", "Sim. Estudantes até 21 anos pagam 1.500 MT para 1 ginásio ou 1.790 MT para todos os ginásios. A família (pais e filhos) paga 2.690 MT e os seniores (65+) pagam 1.990 MT."),
  ("Posso treinar só um dia ou uma semana?", "Sim. A entrada diária custa 500 MT e um pack de 10 entradas custa 4.500 MT. Também há plano semanal (1.490 MT), de duas semanas (1.990 MT) e de fins de semana (1.990 MT)."),
  ("Quanto custa a inscrição?", "A tabela de preços indica a anuidade de membro (900 MT), o cartão (500 MT) e o chaveiro (700 MT)."),
+ ("Como ganho semanas grátis?", "Traz um membro ao ginásio e ganhas 1 semana grátis. Se trouxeres 4 membros, ganhas 4 semanas, ou seja, 1 mês grátis."),
  ("Como marco a primeira sessão grátis?", "Preenche o formulário desta página ou fala connosco pelo WhatsApp. A receção confirma o dia e a hora."),
 ]
 def faq_section():
@@ -325,6 +326,20 @@ def elastic_item(g, root, i):
         on, root, g["slug"], e(g["name"]), e(TP(g["area"])), pic(root, g["cover"], cover_alt(g), "(min-width:900px) 60vw, 100vw"), e(TP(g["area"])), e(g["name"]), g["tel"], T("Ver ginásio"), ARROW, e(g["name"]), i + 1)
 
 # ---------------- HOME ----------------
+def promo_block(root):
+    return """<section class="promo-sec"><div class="wrap"><div class="promo rv">
+  <div class="promo-head"><h2 class="sp">%s</h2><p class="sub">%s</p></div>
+  <ul class="promo-tiers">
+    <li><b>1</b><span>%s</span><strong>%s</strong></li>
+    <li><b>2</b><span>%s</span><strong>%s</strong></li>
+    <li><b>3</b><span>%s</span><strong>%s</strong></li>
+    <li class="top"><b>4</b><span>%s</span><strong>%s</strong></li>
+  </ul>
+  <a class="btn" href="%s">%s</a>
+</div></div></section>""" % (sp(T("Traz um membro, treina grátis")), T("Por cada pessoa que trouxeres ao ginásio ganhas 1 semana grátis."),
+        T("membro trazido"), T("1 semana grátis"), T("membros trazidos"), T("2 semanas grátis"), T("membros trazidos"), T("3 semanas grátis"),
+        T("membros trazidos"), T("4 semanas: 1 mês grátis"), wa("Olá! Quero saber como funciona a promoção de trazer um membro e ganhar semanas grátis."), T("Perguntar pelo WhatsApp"))
+
 def home():
     root = ""
     gcards = "".join(elastic_item(g, root, i) for i, g in enumerate(GYMS))
@@ -345,6 +360,7 @@ def home():
 <div class="elastic rv" data-elastic>%(gcards)s</div>
 <div class="wrap"><p class="soonline rv"><span class="soon">%(soon)s</span>%(xx)s</p></div></section>
 
+%(promo)s
 <section class="calm" id="sobre"><div class="wrap about">
   <div>
     <h2 class="sp">%(ab)s</h2>
@@ -377,7 +393,7 @@ def home():
 """ % dict(l_hero=T("Apresentação"), chk=T("A verificar o horário…"), h1l=e(h1), h1=sp(h1),
            lede=T("Quatro ginásios em Maputo e Matola. A primeira sessão é por nossa conta."),
            heroimg=pic(root, "hero/hero-2.jpg", T("Sala de treino do Pro Gym"), "100vw", eager=True), arr=ARROW,
-           soon=T("Brevemente"), xx=T("Novo ginásio em Xai-Xai."), gh2=sp(T("Encontra o teu ginásio")), gsub=T("Marés, Alto Maé, Matola e Zimpeto, abertos de segunda a domingo. Passa o rato ou toca num ginásio para o ver."), gcards=gcards,
+           promo=promo_block(""), soon=T("Brevemente"), xx=T("Novo ginásio em Xai-Xai."), gh2=sp(T("Encontra o teu ginásio")), gsub=T("Marés, Alto Maé, Matola e Zimpeto, abertos de segunda a domingo. Passa o rato ou toca num ginásio para o ver."), gcards=gcards,
            ab=sp(T("Sobre o Pro Gym")),
            absub=T("Ginásios em Maputo e Matola, abertos de segunda a domingo. Aulas de grupo, personal trainer, fisioterapia e nutrição, ao melhor preço e com qualidade."),
            q1=T("Preços"), q2=T("Aulas"), q3=T("Serviços"), q4=T("App Pro Gym"),
@@ -489,6 +505,7 @@ def pricing():
 <div class="actions rv" style="margin-top:1.6rem"><a class="btn" href="%s#marcar">%s</a><a class="btn dark" href="https://wa.me/%s" target="_blank" rel="noopener">%s</a></div>
 </div></section>""" % (cmp_, t, T("Poupança do plano anual: 12 mensalidades custariam 35.880 MT. Com o plano anual pagas 24.990 MT e poupas 10.890 MT, cerca de 3,6 meses."),
                        root, T("Marcar sessão grátis"), WA, T("Perguntar pelo WhatsApp"))
+    body += promo_block(root)
     write("pricing", layout("pricing/", T("Preços | Pro Gym Fitness"), T("Preços do Pro Gym: mensalidade 2.990 MT, trimestral, semestral e anual, planos de estudante, família e sénior, entradas diárias e inscrição."), body))
     PAGES.append(("pricing/", True))
 
