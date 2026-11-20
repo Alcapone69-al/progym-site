@@ -15,21 +15,12 @@ html.t-uxpro{
 }
 .t-uxpro body{font-size:1.125rem;line-height:1.6}
 .t-uxpro h1,.t-uxpro h2,.t-uxpro .stmt,.t-uxpro .price{letter-spacing:-.005em}
-/* CTA verde (accent do sistema), texto escuro com contraste > 7:1 */
-.t-uxpro .btn:not(.ghost):not(.dark){background:var(--cta);color:var(--on-cta);border-color:var(--on-cta)}
-.t-uxpro .btn:not(.ghost):not(.dark)::before{background:var(--on-cta)}
-.t-uxpro .orange-sec .btn:not(.ghost){background:var(--on-cta);color:#fff;border-color:var(--on-cta)}
-.t-uxpro .orange-sec .btn:not(.ghost)::before{background:#fff}
-@media(hover:hover){.t-uxpro .orange-sec .btn:not(.ghost):hover{color:var(--on-cta)}}
-.t-uxpro .btn.dark::before{background:var(--cta)}
-.t-uxpro .nav>.btn.small{background:var(--cta);color:var(--on-cta);border-color:var(--cta)}
 /* blocos: cartões mais claros que o fundo, cantos maiores, cor de bloco */
 .t-uxpro .plan,.t-uxpro .plist li,.t-uxpro .cpanel{background:var(--card)}
 .t-uxpro .plan.best{background:var(--orange)}
 .t-uxpro .dark-sec{border-radius:28px}
 .t-uxpro .status.open .dot{background:var(--cta);box-shadow:0 0 0 4px rgba(34,197,94,.28)}
 .t-uxpro .soon{background:var(--cta);color:var(--on-cta)}
-.t-uxpro .lang a[aria-current]{background:var(--cta);color:var(--on-cta)}
 .t-uxpro .lang a{min-height:44px}
 .t-uxpro .nav .menu-btn{min-height:44px}
 .t-uxpro :focus-visible{outline-color:var(--cta)}
