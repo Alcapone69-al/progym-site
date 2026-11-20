@@ -106,7 +106,7 @@ EN = {
 "Pro Gym %s | Ginásio em %s": "Pro Gym %s | Gym in %s",
 "Pro Gym %s: %s Morada, telefone, horário e fotos.": "Pro Gym %s: %s Address, phone, opening hours and photos.",
 "Foto %d": "Photo %d",
-"vista aérea": "aerial view", "vista lateral": "side view", "entrada": "entrance", "loja": "shop", "zona de cardio": "cardio area",
+"fachada": "facade", "área de treino funcional": "functional training area", "máquinas de força": "strength machines", "sala de treino": "training room", "zona de musculação": "weights area", "zona de boxe": "boxing area", "vista aérea": "aerial view", "vista lateral": "side view", "entrada": "entrance", "loja": "shop", "zona de cardio": "cardio area",
 "receção": "reception", "sala de spinning": "spinning room", "área de CrossFit": "CrossFit area", "vista do ginásio": "view of the gym",
 "Segunda a sexta": "Monday to Friday", "Sábado": "Saturday", "Domingo": "Sunday", "Feriados": "Public holidays", "%s às %s": "%s to %s",
 "Localizado no coração do Centro Comercial Marés, em Costa do Sol, o Pro Gym Marés é o seu espaço de fitness familiar onde resultados, saúde e diversão se encontram. Aproveite equipamentos modernos, treinadores profissionais e uma comunidade acolhedora – tudo a poucos passos das suas lojas e restaurantes favoritos.":
@@ -219,4 +219,31 @@ EN = {
 "Olá! Gostaria de marcar uma consulta de nutrição no Pro Gym.": "Hello! I'd like to book a nutrition consultation at Pro Gym.",
 "Olá! Gostaria de reservar um campo na arena do Pro Gym Matola.": "Hello! I'd like to book a court at the Pro Gym Matola arena.",
 "Olá! Gostaria de saber o horário das aulas no Pro Gym Zimpeto.": "Hello! I'd like to know the class timetable at Pro Gym Zimpeto.",
+
+# ---- home simplificada ----
+"Quatro ginásios em Maputo e Matola. A primeira sessão é por nossa conta.": "Four gyms in Maputo and Matola. Your first session is on us.",
+"Sobre o Pro Gym": "About Pro Gym",
+"Ginásios em Maputo e Matola, abertos de segunda a domingo. Aulas de grupo, personal trainer, fisioterapia e nutrição, ao melhor preço e com qualidade.": "Gyms in Maputo and Matola, open Monday to Sunday. Group classes, personal training, physiotherapy and nutrition, at the best price and quality.",
+"Marca a tua primeira sessão": "Book your first session",
+"É grátis. Fala connosco pelo WhatsApp e a receção confirma o dia e a hora.": "It is free. Message us on WhatsApp and reception will confirm the day and time.",
+"Olá, gostaria de marcar a primeira sessão grátis no Pro Gym.": "Hello, I would like to book my free first session at Pro Gym.",
+"Falar no WhatsApp": "Chat on WhatsApp",
+"Todos os contactos": "All contacts",
+"Novo ginásio em Xai-Xai.": "New gym in Xai-Xai.",
+
+# ---- página da arena ----
+"Arena do Pro Gym Matola": "Pro Gym Matola Arena",
+"Desporto e lazer para toda a família, no Parque dos Poetas.": "Sport and leisure for the whole family, in Parque dos Poetas.",
+"Mesmo à frente do ginásio": "Right in front of the gym",
+"O que podes fazer na arena": "What you can do at the arena",
+"Padel": "Padel", "Futsal": "Futsal", "Basquetebol": "Basketball", "Parque infantil": "Playground",
+"Treino calisténico ao ar livre": "Outdoor calisthenics",
+"Confirma na receção ou pelo WhatsApp que modalidades estão disponíveis.": "Check with reception or on WhatsApp which activities are available.",
+"Reservar um campo": "Book a court",
+"Fala connosco pelo WhatsApp para saberes a disponibilidade e os valores.": "Message us on WhatsApp to find out about availability and prices.",
+"Arena do Pro Gym Matola | Padel, futsal e mini golfe": "Pro Gym Matola Arena | Padel, futsal and mini golf",
+"A arena desportiva do Pro Gym Matola, no Parque dos Poetas: padel, basquetebol, futsal, mini golfe, parque infantil e treino calisténico ao ar livre.": "The Pro Gym Matola sports arena in Parque dos Poetas: padel, basketball, futsal, mini golf, a playground and outdoor calisthenics.",
+"Ver a página da arena": "See the arena page",
+"Arena Matola": "Matola arena",
+"A arena vai estar disponível também noutros ginásios Pro Gym.": "The arena will also be available at other Pro Gym gyms.",
 }

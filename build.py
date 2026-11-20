@@ -48,7 +48,7 @@ GYMS = [
   tel="+258 85 550 5550",
   addr="Centro Comercial Marés, Av. da Marginal, Maputo nº 9519, 1100 Maputo, Moçambique",
   desc="Localizado no coração do Centro Comercial Marés, em Costa do Sol, o Pro Gym Marés é o seu espaço de fitness familiar onde resultados, saúde e diversão se encontram. Aproveite equipamentos modernos, treinadores profissionais e uma comunidade acolhedora – tudo a poucos passos das suas lojas e restaurantes favoritos.",
-  cover="gyms/mares/drone.jpg", photos=["drone","side","door","store","mares-3","cardio"], plan="plans/plano-mares.jpg"),
+  cover="gyms/mares/drone.jpg", photos=["drone","door","store","mares-3","cardio"], plan="plans/plano-mares.jpg"),
  dict(slug="alto-mae", name="Alto Maé", area="Alto Maé, Maputo",
   tel="+258 85 552 5552",
   addr="Av. da Tanzania nº 3533, Pro Gym - 1º Andar, Maputo 1100, Moçambique",
@@ -66,7 +66,11 @@ GYMS = [
   cover="gyms/zimpeto/side.jpg", photos=["side","door","spinning","crossfit","zimpeto-3","zimpeto-4","zimpeto-5","zimpeto-6"], plan=None),
 ]
 ALT = {"drone": "vista aérea", "side": "vista lateral", "door": "entrada", "store": "loja",
-       "cardio": "zona de cardio", "reception": "receção", "spinning": "sala de spinning", "crossfit": "área de CrossFit"}
+       "cardio": "zona de cardio", "reception": "receção", "spinning": "sala de spinning", "crossfit": "área de CrossFit",
+       "matola-7": "vista aérea", "matola-1": "fachada", "matola-2": "entrada", "matola-3": "zona de cardio",
+       "matola-4": "área de treino funcional", "matola-5": "máquinas de força", "matola-6": "sala de spinning",
+       "mares-3": "sala de treino", "zimpeto-3": "zona de cardio", "zimpeto-4": "zona de musculação",
+       "zimpeto-5": "máquinas de força", "zimpeto-6": "zona de boxe"}
 
 def e(s): return html.escape(s, quote=True)
 def tel(s): return "tel:" + s.replace(" ", "")
@@ -218,7 +222,7 @@ def footer(root):
       <div><h3>%(h1)s</h3><ul>%(g)s</ul></div>
       <div><h3>%(h2)s</h3><ul>
         <li><a href="%(root)spricing/">%(pr)s</a></li><li><a href="%(root)splans/">%(cl)s</a></li>
-        <li><a href="%(root)sservices/">%(sv)s</a></li><li><a href="%(root)sapp/">%(ap)s</a></li>
+        <li><a href="%(root)sservices/">%(sv)s</a></li><li><a href="%(root)sarena/">%(ar)s</a></li><li><a href="%(root)sapp/">%(ap)s</a></li>
         <li><a href="%(root)sstore/">%(st)s</a></li><li><a href="%(root)sgallery/">%(ev)s</a></li></ul></div>
       <div><h3>%(h3)s</h3><ul>
         <li><a href="tel:+258844414441">%(tel)s</a></li>
@@ -233,7 +237,7 @@ def footer(root):
   </div>
 </footer>""" % dict(root=root, aroot=A(root), img=IMG, g=g, tel=ADMIN_TEL, wa=WA, em=EMAIL, fb=FB, ig=IG, li=LI, y=YEAR,
                     l1=T("Ginásios em Maputo e Matola."), h1=T("Ginásios"), h2=T("Explorar"), h3=T("Contactos"), pr=T("Preços"), cl=T("Aulas"),
-                    sv=T("Serviços"), ap=T("App Pro Gym"), st=T("Loja"), ev=T("Eventos"), rights=T("Todos os direitos reservados."), by=T("Website por YFX"))
+                    sv=T("Serviços"), ar=T("Arena Matola"), ap=T("App Pro Gym"), st=T("Loja"), ev=T("Eventos"), rights=T("Todos os direitos reservados."), by=T("Website por YFX"))
 
 def write(path, content):
     pfx = "en/" if LANG == "en" else ""
@@ -325,100 +329,62 @@ def home():
     root = ""
     gcards = "".join(elastic_item(g, root, i) for i, g in enumerate(GYMS))
     h1 = T("Treina onde te der mais jeito.")
-    stm = T("Quatro ginásios em Maputo e Matola. Aulas, personal trainer, fisioterapia e nutrição. A primeira sessão é por nossa conta.")
     body = """
 <section class="hero" aria-label="%(l_hero)s">
   <div class="hero-media">%(heroimg)s</div>
   <div class="hero-in">
     <div class="status hr" id="status" role="status"><span class="dot"></span><span id="statusText">%(chk)s</span></div>
     <h1 class="sp" data-hero aria-label="%(h1l)s">%(h1)s</h1>
-    <div class="hero-foot">
-      <div>
-        <p class="lede">%(lede)s</p>
-        <div class="actions hr"><a class="btn" href="#marcar">%(b1)s %(arr)s</a><a class="btn ghost" href="pricing/">%(b2)s</a></div>
-      </div>
-      <a class="cue hr" href="#historia" aria-label="%(cue)s"><i></i>Scroll</a>
-    </div>
+    <p class="lede hr">%(lede)s</p>
   </div>
-  <i class="hero-bar" aria-hidden="true"></i>
 </section>
-
-<section class="stmt-sec" id="historia"><div class="wrap">
-  <p class="stmt" aria-label="%(stml)s">%(stmt)s</p>
-</div></section>
 
 <section id="ginasios"><div class="wrap">
   <h2 class="sp">%(gh2)s</h2><p class="sub rv">%(gsub)s</p>
 </div>
-<div class="elastic rv" data-elastic>%(gcards)s</div></section>
+<div class="elastic rv" data-elastic>%(gcards)s</div>
+<div class="wrap"><p class="soonline rv"><span class="soon">%(soon)s</span>%(xx)s</p></div></section>
 
-<section class="dark-sec" id="planos" data-sheet><div class="wrap">
-  <h2 class="sp">%(p2)s</h2>
-  <p class="sub rv">%(psub)s</p>
-  <div class="pgrid">
-    <div class="plan big rv"><h3>%(m)s</h3><div class="price">%(pm)s<small>MT</small></div><p class="note">%(mn)s</p></div>
-    <div class="plan best rv"><span class="tag">%(best)s</span><h3>%(an)s</h3><div class="price">%(pa)s<small>MT</small></div><p class="note">%(ann)s</p></div>
-    <ul class="plist">
-      <li class="rv"><span><b>%(est)s</b><small>%(est2)s</small></span><span class="pv">%(pe)s<small> MT</small></span></li>
-      <li class="rv"><span><b>%(sen)s</b><small>%(sen2)s</small></span><span class="pv">%(ps)s<small> MT</small></span></li>
-      <li class="rv"><span><b>%(fam)s</b><small>%(fam2)s</small></span><span class="pv">%(pf)s<small> MT</small></span></li>
+<section class="calm" id="sobre"><div class="wrap about">
+  <div>
+    <h2 class="sp">%(ab)s</h2>
+    <p class="sub rv">%(absub)s</p>
+    <ul class="quick rv">
+      <li><a href="pricing/">%(q1)s</a></li><li><a href="plans/">%(q2)s</a></li><li><a href="services/">%(q3)s</a></li><li><a href="app/">%(q4)s</a></li>
     </ul>
   </div>
-  <div class="actions rv" style="margin-top:2.2rem"><a class="btn" href="pricing/">%(allp)s %(arr)s</a></div>
-</div></section>
-
-<section id="aulas"><div class="wrap">
-  <h2 class="sp">%(a2)s</h2>
-  <p class="sub rv">%(asub)s</p>
-  <div class="cls-grid">
-    <a class="cls" href="plans/"><div class="pw">%(i1)s</div><div class="tx"><h3>Spinn 50</h3><p>%(c1)s</p></div></a>
-    <a class="cls" href="plans/"><div class="pw">%(i2)s</div><div class="tx"><h3>%(c2n)s</h3><p>%(c2)s</p></div></a>
-    <a class="cls" href="plans/"><div class="pw">%(i3)s</div><div class="tx"><h3>CrossTrain</h3><p>%(c3)s</p></div></a>
+  <div class="pcard rv">
+    <h3>%(m)s</h3>
+    <div class="price">%(pm)s<small>MT</small></div>
+    <ul class="plist2">
+      <li><span>%(an)s</span><b>%(pa)s MT</b></li>
+      <li><span>%(est)s</span><b>%(pe)s MT</b></li>
+      <li><span>%(sen)s</span><b>%(ps)s MT</b></li>
+      <li><span>%(fam)s</span><b>%(pf)s MT</b></li>
+    </ul>
+    <a class="btn dark" href="pricing/">%(allp)s %(arr)s</a>
   </div>
-  <div class="actions rv" style="margin-top:2.2rem"><a class="btn dark" href="plans/">%(allc)s %(arr)s</a></div>
 </div></section>
 
-<section class="paper" id="servicos"><div class="wrap">
-  <h2 class="sp">%(s2)s</h2>
-  <ul class="srows">
-    <li class="rv"><a href="services/personal-training/"><h3>%(sv1)s</h3><p>%(sd1)s</p><span class="go">%(more)s</span><span class="thumb">%(t1)s</span></a></li>
-    <li class="rv"><a href="services/physiotherapy/"><h3>%(sv2)s</h3><p>%(sd2)s</p><span class="go">%(more)s</span><span class="thumb">%(t2)s</span></a></li>
-    <li class="rv"><a href="services/nutrition/"><h3>%(sv3)s</h3><p>%(sd3)s</p><span class="go">%(more)s</span><span class="thumb">%(t3)s</span></a></li>
-    <li class="rv"><a href="services/#arena"><h3>%(sv4)s</h3><p>%(sd4)s</p><span class="go">%(more)s</span><span class="thumb">%(t4)s</span></a></li>
-  </ul>
+<section class="calm contact" id="marcar"><div class="wrap">
+  <h2 class="sp">%(ch)s</h2>
+  <p class="sub rv">%(csub)s</p>
+  <div class="actions rv" style="margin-top:1.8rem">
+    <a class="btn wa" href="%(wa)s" target="_blank" rel="noopener">%(cb)s %(arr)s</a>
+    <a class="btn dark" href="contact/">%(cc)s</a>
+  </div>
 </div></section>
-
-<section class="dark-sec" id="app" data-sheet><div class="wrap app-grid">
-  <div><span class="soon rv">%(soon)s</span><h2 class="sp">%(ap)s</h2>
-  <p class="sub rv">%(apsub)s</p>
-  <div class="actions rv" style="margin-top:1.8rem"><a class="btn" href="app/">%(apb)s %(arr)s</a></div></div>
-  %(phone)s
-</div></section>
-
-%(book)s
-%(faq)s
-""" % dict(l_hero=T("Apresentação"), chk=T("A verificar o horário…"), h1l=e(h1), h1=sp(h1), lede=T("Quatro ginásios em Maputo e Matola, aulas de grupo, personal trainer, fisioterapia e nutrição. A primeira sessão é por nossa conta."),
-           b1=T("Marcar sessão grátis"), b2=T("Ver preços"), cue=T("Descer para o conteúdo"), stml=e(stm), stmt=stmt_words(stm),
+""" % dict(l_hero=T("Apresentação"), chk=T("A verificar o horário…"), h1l=e(h1), h1=sp(h1),
+           lede=T("Quatro ginásios em Maputo e Matola. A primeira sessão é por nossa conta."),
            heroimg=pic(root, "hero/hero-2.jpg", T("Sala de treino do Pro Gym"), "100vw", eager=True), arr=ARROW,
-           gh2=sp(T("Encontra o teu ginásio")), gsub=T("Marés, Alto Maé, Matola e Zimpeto, abertos de segunda a domingo. Passa o rato ou toca num ginásio para o ver."), gcards=gcards,
-           p2=sp(T("Preços sem letras pequenas")), psub=T("Há ainda planos trimestral e semestral, entradas diárias e semanais. Vê a tabela completa."),
-           m=T("Mensalidade"), pm=N("2.990"), mn=T("Todos os ginásios"), best=T("Melhor valor"), an=T("Anual"), pa=N("24.990"), ann=T("3,6 meses grátis. Poupas 10.890 MT."),
-           est=T("Estudante"), est2=T("1 ginásio, até 21 anos"), pe=N("1.500"), sen=T("Sénior"), sen2=T("65+ anos"), ps=N("1.990"), fam=T("Família"), fam2=T("Pais e filhos"), pf=N("2.690"),
-           allp=T("Ver todos os preços"),
-           a2=sp(T("Aulas que te fazem aparecer")), asub=T("Aulas de grupo com instrutor, para quem treina melhor acompanhado."),
-           c1=T("Ciclismo indoor de alta intensidade para melhorar a resistência e queimar calorias."), c2n=T("Aeróbica"),
-           c2=T("Treino aeróbico rítmico com movimentos dinâmicos para aumentar a resistência física."),
-           c3=T("Treino funcional de corpo inteiro que desenvolve força, agilidade e condicionamento."), allc=T("Ver horários das aulas"),
-           i1=pic(root, "classes/spinn.jpg", T("Aula de Spinn 50 no Pro Gym"), "(min-width:900px) 58vw, 100vw"),
-           i2=pic(root, "classes/aerobics.jpg", T("Aula de aeróbica no Pro Gym"), "(min-width:900px) 40vw, 100vw"),
-           i3=pic(root, "classes/crosstrain.jpg", T("Aula de CrossTrain no Pro Gym"), "(min-width:900px) 75vw, 100vw"),
-           s2=sp(T("Mais do que sala de musculação")), more=T("Saber mais"),
-           sv1=T("Personal trainer"), sd1=T("Treino com acompanhamento individual."), sv2=T("Fisioterapia"), sd2=T("Recupera de lesões e treina com segurança."),
-           sv3=T("Nutrição"), sd3=T("Orientação alimentar para o teu objetivo."), sv4=T("Padel, mini golf e futsal"), sd4=T("Desporto e lazer na arena do Pro Gym Matola."),
-           t1=pic(root, "services/personal-trainer.jpg", "", "170px"), t2=pic(root, "services/fisoterapia.jpg", "", "170px"),
-           t3=pic(root, "services/nutricao.jpg", "", "170px"), t4=pic(root, "services/padel.jpg", "", "170px"),
-           soon=T("Brevemente"), ap=sp(T("A app do Pro Gym")), apsub=T("Regista o teu treino, acompanha o teu progresso e compete com os amigos do teu ginásio. O cartão de acesso e as mensalidades continuam como hoje."),
-           apb=T("Conhecer a app"), phone=phone_demo(cap=True), book=booking_section(root), faq=faq_section())
+           soon=T("Brevemente"), xx=T("Novo ginásio em Xai-Xai."), gh2=sp(T("Encontra o teu ginásio")), gsub=T("Marés, Alto Maé, Matola e Zimpeto, abertos de segunda a domingo. Passa o rato ou toca num ginásio para o ver."), gcards=gcards,
+           ab=sp(T("Sobre o Pro Gym")),
+           absub=T("Ginásios em Maputo e Matola, abertos de segunda a domingo. Aulas de grupo, personal trainer, fisioterapia e nutrição, ao melhor preço e com qualidade."),
+           q1=T("Preços"), q2=T("Aulas"), q3=T("Serviços"), q4=T("App Pro Gym"),
+           m=T("Mensalidade"), pm=N("2.990"), an=T("Anual"), pa=N("24.990"), est=T("Estudante"), pe=N("1.500"), sen=T("Sénior"), ps=N("1.990"),
+           fam=T("Família"), pf=N("2.690"), allp=T("Ver todos os preços"),
+           ch=sp(T("Marca a tua primeira sessão")), csub=T("É grátis. Fala connosco pelo WhatsApp e a receção confirma o dia e a hora."),
+           wa=wa("Olá, gostaria de marcar a primeira sessão grátis no Pro Gym."), cb=T("Falar no WhatsApp"), cc=T("Todos os contactos"))
     write("", layout("", T("Pro Gym Fitness | Ginásios em Maputo e Matola"), T("Quatro ginásios em Maputo e Matola: Marés, Alto Maé, Matola e Zimpeto. Aulas, personal trainer, fisioterapia, nutrição e padel. Primeira sessão grátis."), body, jsonld=org_ld()))
     PAGES.append(("", True))
 
@@ -454,7 +420,7 @@ def gyms():
                 sp(F("Aulas no %s", g["name"])), T("Pergunta o horário das aulas na receção ou pelo WhatsApp."), wa("Olá! Gostaria de saber o horário das aulas no Pro Gym Zimpeto."), T("Pedir horário"))
         extra = ""
         if g["slug"] == "matola":
-            extra = '<a class="btn dark" href="%sservices/#arena">%s</a>' % (root, T("Ver a arena desportiva"))
+            extra = '<a class="btn dark" href="%sarena/">%s</a>' % (root, T("Ver a arena desportiva"))
         others = "".join('<li><a href="%sgyms/%s/">Pro Gym %s <span>%s</span></a></li>' % (root, o["slug"], e(o["name"]), e(TP(o["area"]))) for o in GYMS if o is not g)
         body = page_hero(root, [(T("Início"), ""), (T("Ginásios"), "gyms/"), (g["name"], None)], "Pro Gym " + g["name"], area, g["cover"], cover_alt(g)) + """
 <section class="tight"><div class="wrap info">
@@ -569,12 +535,13 @@ def services():
 <div style="grid-column:span 1">%s<p class="sub" style="margin-top:.6rem">Padel</p></div>
 <div style="grid-column:span 1;margin-top:3rem">%s<p class="sub" style="margin-top:.6rem">%s</p></div>
 <div style="grid-column:span 1">%s<p class="sub" style="margin-top:.6rem">Futsal</p></div></div>
-<div class="actions rv" style="margin-top:2rem"><a class="btn" href="../gyms/matola/">%s</a><a class="btn ghost" href="%s" target="_blank" rel="noopener">%s</a></div></div></section>""" % (
+<p class="soonline rv" style="margin-top:2rem"><span class="soon">%s</span>%s</p>
+<div class="actions rv" style="margin-top:2rem"><a class="btn" href="../arena/">%s</a><a class="btn ghost" href="%s" target="_blank" rel="noopener">%s</a></div></div></section>""" % (
         sp(T("A arena do Pro Gym Matola")), T("Mesmo à frente do ginásio, no Parque dos Poetas, na Matola: campos de padel, basquetebol e futsal, mini golfe, parque infantil e a única área de treino calisténico ao ar livre em Moçambique."),
         mask(root, "services/padel.jpg", T("Campo de padel na arena do Pro Gym Matola"), "33vw", True, ' style="aspect-ratio:3/4"'),
         mask(root, "services/mini-golf.jpg", T("Mini golfe na arena do Pro Gym Matola"), "33vw", True, ' style="aspect-ratio:3/4"'), T("Mini golf"),
         mask(root, "services/futsal.jpg", T("Campo de futsal na arena do Pro Gym Matola"), "33vw", True, ' style="aspect-ratio:3/4"'),
-        T("Ver o Pro Gym Matola"), wa("Olá! Gostaria de reservar um campo na arena do Pro Gym Matola."), T("Reservar campo pelo WhatsApp"))
+        T("Brevemente"), T("A arena vai estar disponível também noutros ginásios Pro Gym."), T("Ver a página da arena"), wa("Olá! Gostaria de reservar um campo na arena do Pro Gym Matola."), T("Reservar campo pelo WhatsApp"))
     body = page_hero(root, [(T("Início"), ""), (T("Serviços"), None)], T("Serviços"), T("Mais do que sala de musculação."), "services/personal-trainer.jpg", T("Personal trainer no Pro Gym")) + '<section class="tight"><div class="wrap"><ul class="srows" style="margin-top:0">%s</ul></div></section>%s' % (lis, arena)
     write("services", layout("services/", T("Serviços | Pro Gym Fitness"), T("Personal trainer, fisioterapia e nutrição, e a arena desportiva do Pro Gym Matola com padel, futsal e mini golfe."), body, og_img="services/personal-trainer.jpg"))
     PAGES.append(("services/", True))
@@ -593,6 +560,45 @@ def services():
                           mask(r, img, F("%s no Pro Gym", n), "(min-width:860px) 35vw, 100vw", True, ' style="aspect-ratio:4/5"'))
         write(path.rstrip("/"), layout(path, "%s | Pro Gym Fitness" % n, T(txt) + " " + T("Marca pelo WhatsApp."), b, og_img=img))
         PAGES.append((path, True))
+
+# ---------------- ARENA (Matola) ----------------
+# O que existe hoje na arena. Para mudar, editar aqui (nome, foto ou None) e correr build.py.
+ARENA = [("Padel", "services/padel.jpg", "Campo de padel na arena do Pro Gym Matola"),
+         ("Mini golf", "services/mini-golf.jpg", "Mini golfe na arena do Pro Gym Matola"),
+         ("Futsal", "services/futsal.jpg", "Campo de futsal na arena do Pro Gym Matola"),
+         ("Basquetebol", None, None), ("Parque infantil", None, None), ("Treino calisténico ao ar livre", None, None)]
+
+def arena():
+    root = "../"
+    g = [x for x in GYMS if x["slug"] == "matola"][0]
+    shots = "".join('<div>%s<p class="sub" style="margin-top:.6rem">%s</p></div>' % (
+        mask(root, img, T(alt), "(min-width:900px) 33vw, 100vw", True, ' style="aspect-ratio:3/4"'), T(n)) for n, img, alt in ARENA if img)
+    chips = "".join('<span class="tagc">%s</span>' % T(n) for n, img, alt in ARENA if not img)
+    body = page_hero(root, [(T("Início"), ""), (T("Arena do Pro Gym Matola"), None)], T("Arena do Pro Gym Matola"), T("Desporto e lazer para toda a família, no Parque dos Poetas."), g["cover"], cover_alt(g)) + """
+<section class="tight"><div class="wrap info">
+  <div><h2 class="sp">%(h2)s</h2><p class="sub rv" style="color:var(--ink2)">%(d)s</p>
+  <div class="actions rv" style="margin-top:1.6rem"><a class="btn wa" href="%(wa)s" target="_blank" rel="noopener">%(b1)s</a><a class="btn dark" href="%(map)s" target="_blank" rel="noopener">%(b2)s</a></div></div>
+  <dl class="facts rv">
+    <div><dt>%(t1)s</dt><dd>%(addr)s</dd></div>
+    <div><dt>%(t2)s</dt><dd><a href="%(tl)s">%(tel)s</a></dd></div>
+    <div><dt>WhatsApp</dt><dd><a href="https://wa.me/%(waid)s" target="_blank" rel="noopener">%(atel)s</a></dd></div>
+  </dl>
+</div></section>
+<section class="paper tight"><div class="wrap"><h2 class="sp">%(h3)s</h2>
+  <div class="photos" style="grid-template-columns:repeat(3,1fr)">%(shots)s</div>
+  <div class="chips rv" style="margin-top:2rem">%(chips)s</div>
+  <p class="soonline rv"><span class="soon">%(soon)s</span>%(more)s</p>
+  <p class="fineprint rv">%(note)s</p></div></section>
+<section class="tight"><div class="wrap"><h2 class="sp">%(h4)s</h2>
+  <p class="sub rv">%(s4)s</p>
+  <div class="actions rv" style="margin-top:1.6rem"><a class="btn wa" href="%(wa)s" target="_blank" rel="noopener">%(b1)s</a><a class="btn dark" href="%(gym)sgyms/matola/">%(b3)s</a></div></div></section>
+""" % dict(h2=sp(T("Mesmo à frente do ginásio")), d=e(T("Mesmo à frente do ginásio, no Parque dos Poetas, na Matola: campos de padel, basquetebol e futsal, mini golfe, parque infantil e a única área de treino calisténico ao ar livre em Moçambique.")),
+           wa=wa("Olá! Gostaria de reservar um campo na arena do Pro Gym Matola."), b1=T("Reservar campo pelo WhatsApp"), map=maps("Pro Gym Matola, " + g["addr"]), b2=T("Como chegar"),
+           t1=T("Morada"), addr=e(TP(g["addr"])), t2=T("Telefone"), tl=tel(g["tel"]), tel=g["tel"], waid=WA, atel=ADMIN_TEL,
+           soon=T("Brevemente"), more=T("A arena vai estar disponível também noutros ginásios Pro Gym."), h3=sp(T("O que podes fazer na arena")), shots=shots, chips=chips, note=T("Confirma na receção ou pelo WhatsApp que modalidades estão disponíveis."),
+           h4=sp(T("Reservar um campo")), s4=T("Fala connosco pelo WhatsApp para saberes a disponibilidade e os valores."), gym=root, b3=T("Ver o Pro Gym Matola"))
+    write("arena", layout("arena/", T("Arena do Pro Gym Matola | Padel, futsal e mini golfe"), T("A arena desportiva do Pro Gym Matola, no Parque dos Poetas: padel, basquetebol, futsal, mini golfe, parque infantil e treino calisténico ao ar livre."), body, og_img=g["cover"]))
+    PAGES.append(("arena/", True))
 
 # ---------------- LOJA ----------------
 def store():
@@ -695,7 +701,7 @@ if __name__ == "__main__":
     for lang in ("pt", "en"):
         LANG = lang
         PAGES[:] = []
-        home(); gyms(); pricing(); classes(); services(); store(); contact(); gallery(); app()
+        home(); gyms(); pricing(); classes(); services(); arena(); store(); contact(); gallery(); app()
         if lang == "pt": pt_pages = list(PAGES)
         print(lang.upper(), len(PAGES), "páginas")
     extras(pt_pages)
