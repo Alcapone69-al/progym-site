@@ -159,7 +159,7 @@ def layout(path, title, desc, body, jsonld=None, og_img="hero/hero-2.jpg", noind
     alt_links = "" if noindex else ('<link rel="alternate" hreflang="pt" href="%s/%s">\n<link rel="alternate" hreflang="en" href="%s/en/%s">\n<link rel="alternate" hreflang="x-default" href="%s/%s">' % (
         SITE_URL, path, SITE_URL, path, SITE_URL, path))
     return """<!DOCTYPE html>
-<html lang="%(lang)s">
+<html lang="%(lang)s" class="t-uxpro">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -183,7 +183,7 @@ def layout(path, title, desc, body, jsonld=None, og_img="hero/hero-2.jpg", noind
 <link rel="preload" href="%(aroot)sassets/fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 %(pre)s
 <link rel="stylesheet" href="%(aroot)sassets/css/style.css">
-<script>(function(){try{var q=location.search.match(/[?&]tema=([a-z]+)/);if(q){if(q[1]==='uxpro')sessionStorage.setItem('pg-tema','uxpro');else sessionStorage.removeItem('pg-tema')}if(sessionStorage.getItem('pg-tema')==='uxpro'){var h=document.documentElement;h.classList.add('t-uxpro');var l=document.createElement('link');l.rel='stylesheet';l.href='%(aroot)sassets/css/ux-pro.css';document.head.appendChild(l)}}catch(e){}})();</script>
+<link rel="stylesheet" href="%(aroot)sassets/css/ux-pro.css">
 %(ld)s
 </head>
 <body>
@@ -698,8 +698,8 @@ def app():
 
 # ---------------- 404 / sitemap / robots ----------------
 def extras(pages_pt):
-    nf = """<!DOCTYPE html><html lang="pt"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Página não encontrada | Page not found | Pro Gym</title><meta name="robots" content="noindex">
-<link rel="stylesheet" href="/assets/css/style.css"></head>
+    nf = """<!DOCTYPE html><html lang="pt" class="t-uxpro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Página não encontrada | Page not found | Pro Gym</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="/assets/css/ux-pro.css"></head>
 <body><div class="notfound"><div><h1>404</h1><p style="font-size:1.2rem;margin:1rem 0 .4rem">Esta página não existe ou mudou de sítio.</p><p style="font-size:1.05rem;margin:0 0 2rem;opacity:.8">This page doesn't exist or has moved.</p><a class="btn" href="/">Voltar ao início</a> <a class="btn dark" href="/en/">Back to home</a></div></div></body></html>"""
     open(os.path.join(OUT, "404.html"), "w", encoding="utf-8").write(nf)
     def u(p, pfx): return "%s/%s%s" % (SITE_URL, pfx, p)

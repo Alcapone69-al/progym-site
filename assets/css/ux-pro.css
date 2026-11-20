@@ -23,10 +23,6 @@ html.t-uxpro{
 .t-uxpro .nav .menu-btn{min-height:44px}
 .t-uxpro :focus-visible{outline-color:var(--cta)}
 
-/* aviso para voltar ao original */
-.tema-pill{position:fixed;left:50%;bottom:1rem;transform:translateX(-50%);z-index:85;background:#0F172A;color:#fff;border:1.5px solid var(--cta,#22C55E);border-radius:999px;padding:.55rem 1rem;font:600 .9rem var(--body);text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.35);white-space:nowrap}
-.tema-pill b{color:var(--cta,#22C55E)}
-@media(max-width:600px){.tema-pill{left:1rem;transform:none;bottom:1rem;max-width:calc(100vw - 8.5rem);overflow:hidden;text-overflow:ellipsis}}
 
 /* escala dos títulos ajustada à largura do Barlow Condensed (mais largo que o tipo original) */
 .t-uxpro .hero h1{font-size:clamp(3rem,min(8.2vw,15vh),7.6rem);max-width:15ch}
