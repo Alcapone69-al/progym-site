@@ -615,3 +615,42 @@ section.calm{padding:var(--sec) 0}
   .dcard:focus-visible{outline:2px solid var(--orange);outline-offset:-2px}
 }
 @media(max-width:1020px){.dimg,.dcard i,.dtxt small{display:none}.dtxt b{font:inherit}.dcard{display:inline-block}}
+
+/* espaçamento mais compacto */
+:root{--sec:clamp(2.4rem,5.2vw,4rem)}
+section.tight{padding:clamp(2rem,4vw,3.2rem) 0}
+section.calm{padding:var(--sec) 0}
+.sub{margin-top:.8rem}
+.sp+.sub,h2+.sub{margin-top:.8rem}
+.photos,.chips{margin-top:1.4rem}
+.promo-sec{padding:clamp(1.4rem,3vw,2.4rem) 0}
+.phero{min-height:min(44svh,400px);padding-top:8rem}
+
+/* menu: itens sem miniatura (Preços) */
+@media(min-width:1021px){.dplain{padding:.7rem .8rem!important}.dplain .dtxt b{font-size:1.05rem}}
+
+/* equipa */
+.tree{display:flex;flex-direction:column;align-items:center;margin-top:1.6rem}
+.t-root{display:flex;flex-direction:column;align-items:center;gap:.5rem;text-align:center}
+.t-root b{font:800 1.3rem var(--display);text-transform:uppercase}
+.av{width:58px;height:58px;border-radius:50%;background:var(--orange);color:var(--iron);display:grid;place-items:center;flex:none}
+.t-root .av{width:68px;height:68px}
+.t-kids{list-style:none;margin:0;padding:1.6rem 0 0;display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;position:relative;width:100%}
+.t-kids::before{content:"";position:absolute;top:0;left:10%;right:10%;height:1.6rem;border:2px solid var(--orange);border-bottom:0;border-radius:14px 14px 0 0;opacity:.55}
+.t-kids::after{content:"";position:absolute;top:-1.6rem;left:50%;height:1.6rem;border-left:2px solid var(--orange);opacity:.55}
+.t-kids li{display:flex;flex-direction:column;align-items:center;gap:.5rem;text-align:center;background:var(--chalk,#f2f2f0);border-radius:16px;padding:1rem .6rem;position:relative}
+.t-kids li::before{content:"";position:absolute;top:-1.6rem;left:50%;height:1.6rem;border-left:2px solid var(--orange);opacity:.55}
+.t-kids li b{font-weight:700;font-size:.98rem}
+.t-kids li small{color:var(--ink2);font-size:.85rem}
+@media(max-width:860px){
+  .t-kids{grid-template-columns:repeat(2,1fr)}
+  .t-kids::before,.t-kids::after,.t-kids li::before{display:none}
+  .t-kids{padding-top:1rem}
+}
+
+/* mapa */
+.mapbox{margin-top:1.2rem;border-radius:22px;overflow:hidden;background:#e5e5e2;aspect-ratio:16/6}
+.mapbox iframe{width:100%;height:100%;border:0;display:block}
+@media(max-width:700px){.mapbox{aspect-ratio:4/3}}
+.dark-sec .tagc{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.28)}
+.dark-sec .fineprint{color:#cfcfcb}
