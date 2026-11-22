@@ -120,7 +120,7 @@ def stmt_words(text):
     return " ".join('<span class="sw">%s</span>' % e(w) for w in text.split())
 
 NAV = [("Ginásios", "gyms/", [(g["name"], "gyms/%s/" % g["slug"]) for g in GYMS]),
-       ("Preços", "pricing/", None), ("Aulas", "plans/", None), ("Serviços", "services/", None),
+       ("Preços", "pricing/", None), ("Aulas", "plans/", None), ("Serviços", "services/", None), ("Arena", "arena/", None),
        ("App", "app/", None), ("Loja", "store/", None), ("Contacto", "contact/", None)]
 
 PAGES = []  # (path, indexable) da língua que está a ser gerada

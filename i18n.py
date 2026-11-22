@@ -253,4 +253,6 @@ EN = {
 "Olá! Quero saber como funciona a promoção de trazer um membro e ganhar semanas grátis.": "Hi! I'd like to know how the promotion works: bring a member and get free weeks.",
 "Como ganho semanas grátis?": "How do I earn free weeks?",
 "Traz um membro ao ginásio e ganhas 1 semana grátis. Se trouxeres 4 membros, ganhas 4 semanas, ou seja, 1 mês grátis.": "Bring a member to the gym and get 1 free week. Bring 4 members and you get 4 weeks, which is 1 month free.",
+"Arena desportiva": "Sports arena",
+"Arena": "Arena",
 }

@@ -592,3 +592,5 @@ section.calm{padding:var(--sec) 0}
 .promo-tiers strong{font-size:1.05rem}
 .promo .btn{justify-self:start;background:var(--iron);color:var(--white);border-color:var(--iron)}
 @media(max-width:760px){.promo-tiers{grid-template-columns:repeat(2,1fr)}}
+.nav a{white-space:nowrap}
+@media(min-width:901px) and (max-width:1180px){.nav{gap:.9rem}.nav>a,.nav .dd>a{font-size:.95rem}}
