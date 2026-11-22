@@ -123,6 +123,8 @@ NAV = [("Ginásios", "gyms/", [(g["name"], "gyms/%s/" % g["slug"]) for g in GYMS
        ("Preços", "pricing/", None), ("Aulas", "plans/", None), ("Serviços", "services/", None), ("Arena", "arena/", None),
        ("App", "app/", None), ("Loja", "store/", None), ("Contacto", "contact/", None)]
 
+import hashlib
+ASSET_VER = hashlib.md5(b''.join(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), f), 'rb').read() for f in ('assets/css/style.css','assets/css/ux-pro.css','assets/js/site.js'))).hexdigest()[:8]
 PAGES = []  # (path, indexable) da língua que está a ser gerada
 
 def TP(s):
@@ -184,8 +186,8 @@ def layout(path, title, desc, body, jsonld=None, og_img="hero/hero-2.jpg", noind
 <link rel="preload" href="%(aroot)sassets/fonts/big-shoulders-display-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="%(aroot)sassets/fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 %(pre)s
-<link rel="stylesheet" href="%(aroot)sassets/css/style.css">
-<link rel="stylesheet" href="%(aroot)sassets/css/ux-pro.css">
+<link rel="stylesheet" href="%(aroot)sassets/css/style.css?v=%(ver)s">
+<link rel="stylesheet" href="%(aroot)sassets/css/ux-pro.css?v=%(ver)s">
 %(ld)s
 </head>
 <body>
@@ -207,10 +209,10 @@ def layout(path, title, desc, body, jsonld=None, og_img="hero/hero-2.jpg", noind
 <a class="wa-float" href="https://wa.me/%(wa)s" target="_blank" rel="noopener" aria-label="%(wa_l)s">WhatsApp</a>
 <script src="%(aroot)sassets/js/vendor/gsap.min.js" defer></script>
 <script src="%(aroot)sassets/js/vendor/ScrollTrigger.min.js" defer></script>
-<script src="%(aroot)sassets/js/site.js" defer></script>
+<script src="%(aroot)sassets/js/site.js?v=%(ver)s" defer></script>
 </body>
 </html>
-""" % dict(lang=LANG, title=e(title), desc=e(desc), robots=robots, canon=canon, alt=alt_links, site=SITE_URL, img=IMG, og=og_img, root=root, aroot=aroot, pre=pre,
+""" % dict(lang=LANG, title=e(title), desc=e(desc), robots=robots, canon=canon, alt=alt_links, site=SITE_URL, img=IMG, og=og_img, root=root, aroot=aroot, ver=ASSET_VER, pre=pre,
            loc="en_US" if en else "pt_MZ", loc2="pt_MZ" if en else "en_US", lang_sw=lang_sw,
            ld=ld, nav="".join(nav), body=body, footer=footer(root), wa=WA,
            skip=T("Saltar para o conteúdo"), logo_l=T("Pro Gym Fitness, início"), menu=T("Menu"), main=T("Principal"), cta=T("Sessão grátis"), wa_l=T("Falar connosco no WhatsApp"))
@@ -701,9 +703,9 @@ def app():
 # ---------------- 404 / sitemap / robots ----------------
 def extras(pages_pt):
     nf = """<!DOCTYPE html><html lang="pt" class="t-uxpro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Página não encontrada | Page not found | Pro Gym</title><meta name="robots" content="noindex">
-<link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="/assets/css/ux-pro.css"></head>
+<link rel="stylesheet" href="/assets/css/style.css?v=%s"><link rel="stylesheet" href="/assets/css/ux-pro.css?v=%s"></head>
 <body><div class="notfound"><div><h1>404</h1><p style="font-size:1.2rem;margin:1rem 0 .4rem">Esta página não existe ou mudou de sítio.</p><p style="font-size:1.05rem;margin:0 0 2rem;opacity:.8">This page doesn't exist or has moved.</p><a class="btn" href="/">Voltar ao início</a> <a class="btn dark" href="/en/">Back to home</a></div></div></body></html>"""
-    open(os.path.join(OUT, "404.html"), "w", encoding="utf-8").write(nf)
+    open(os.path.join(OUT, "404.html"), "w", encoding="utf-8").write(nf.replace("?v=%s", "?v=" + ASSET_VER))
     def u(p, pfx): return "%s/%s%s" % (SITE_URL, pfx, p)
     urls = ""
     for p, ok in pages_pt:
