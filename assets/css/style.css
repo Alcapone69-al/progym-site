@@ -594,3 +594,24 @@ section.calm{padding:var(--sec) 0}
 @media(max-width:760px){.promo-tiers{grid-template-columns:repeat(2,1fr)}}
 .nav a{white-space:nowrap}
 @media(min-width:901px) and (max-width:1180px){.nav{gap:.9rem}.nav>a,.nav .dd>a{font-size:.95rem}}
+
+/* menu dos ginásios: painel com cartões */
+@media(min-width:1021px){
+  .sub-nav .drop{left:-1rem;margin-left:0;top:calc(100% + 14px);width:min(560px,92vw);padding:1rem;border:0;border-top:3px solid var(--orange);border-radius:22px;background:var(--iron);box-shadow:0 24px 60px rgba(0,0,0,.45);display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem}
+  .sub-nav .drop::before{content:"";position:absolute;left:0;right:0;top:-18px;height:18px}
+  .drop li{margin:0}
+  .dcard{position:relative;display:block!important;padding:0!important;border-radius:14px;overflow:hidden;aspect-ratio:16/10;background:#1c1c1c;isolation:isolate}
+  .dcard::after{display:none!important}
+  .dimg,.dimg picture,.dimg img{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .dimg img{object-fit:cover;transition:transform .7s var(--ease)}
+  .dcard::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,0) 35%,rgba(0,0,0,.82));transition:background .4s}
+  .dtxt{position:absolute;left:.9rem;right:2.6rem;bottom:.7rem;z-index:2;display:flex;flex-direction:column;line-height:1.15}
+  .dtxt b{font:800 1.45rem var(--display);text-transform:uppercase;letter-spacing:.01em;color:#fff}
+  .dtxt small{font-size:.82rem;color:#e8e8e4;opacity:.9}
+  .dcard i{position:absolute;right:.7rem;bottom:.7rem;z-index:2;width:2rem;height:2rem;border-radius:50%;background:var(--orange);color:var(--iron);display:grid;place-items:center;font-style:normal;font-weight:700;transform:translateX(-6px);opacity:0;transition:opacity .3s,transform .4s var(--ease)}
+  .dcard:hover i,.dcard:focus-visible i{opacity:1;transform:none}
+  .dcard:hover img,.dcard:focus-visible img{transform:scale(1.07)}
+  .dcard:hover::before{background:linear-gradient(180deg,rgba(232,96,10,.08) 20%,rgba(0,0,0,.88))}
+  .dcard:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+}
+@media(max-width:1020px){.dimg,.dcard i,.dtxt small{display:none}.dtxt b{font:inherit}.dcard{display:inline-block}}

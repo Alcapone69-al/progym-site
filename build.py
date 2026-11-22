@@ -138,7 +138,9 @@ def layout(path, title, desc, body, jsonld=None, og_img="hero/hero-2.jpg", noind
     for label, href, sub in NAV:
         active = ' aria-current="page"' if (path == href or (sub and path.startswith("gyms/")) or (href != "gyms/" and path.startswith(href))) else ""
         if sub:
-            items = "".join('<li><a href="%s%s">%s</a></li>' % (root, h, e(n)) for n, h in sub)
+            gm = {"gyms/%s/" % g["slug"]: g for g in GYMS}
+            items = "".join('<li><a class="dcard" href="%s%s"><span class="dimg">%s</span><span class="dtxt"><b>%s</b><small>%s</small></span><i aria-hidden="true">&rarr;</i></a></li>' % (
+                root, h, pic(root, gm[h]["cover"], "", "260px") if h in gm else "", e(n), e(TP(gm[h]["area"])) if h in gm else "") for n, h in sub)
             nav.append('<li class="sub-nav"><a href="%s%s"%s>%s</a><ul class="drop">%s</ul></li>' % (root, href, active, T(label), items))
         else:
             nav.append('<li><a href="%s%s"%s>%s</a></li>' % (root, href, active, T(label)))
