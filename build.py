@@ -120,7 +120,7 @@ def stmt_words(text):
     return " ".join('<span class="sw">%s</span>' % e(w) for w in text.split())
 
 NAV = [("Ginásios", "gyms/", [(g["name"], "gyms/%s/" % g["slug"]) for g in GYMS]),
-       ("Preços", "pricing/", [("Mensalidades", "pricing/", "Preços normais dos planos"), ("Ofertas", "ofertas/", "Traz um membro, treina grátis")]), ("Aulas", "plans/", None), ("Serviços", "services/", None), ("Arena", "arena/", None),
+       ("Preços", "pricing/", [("Mensalidades", "pricing/", "Preços normais dos planos"), ("Ofertas", "ofertas/", "Traz um membro, treina grátis")]), ("Aulas", "plans/", None), ("Serviços", "services/", None), ("Arena", "arena/", None), ("Eventos", "gallery/", None),
        ("App", "app/", None), ("Loja", "store/", None), ("Contacto", "contact/", None)]
 
 import hashlib
@@ -692,14 +692,35 @@ def contact():
     PAGES.append(("contact/", True))
 
 # ---------------- EVENTOS ----------------
+EVENTS = []   # eventos anunciados: ("Nome do evento", "data ou nota"); enquanto estiver vazio o formulário aceita o nome livre
+
 def gallery():
     root = "../"
+    opts = "".join('<option%s>%s</option>' % (" selected" if k == 0 else "", e(g["name"])) for k, g in enumerate(GYMS))
+    dl = "".join('<option value="%s"></option>' % e(n) for n, _ in EVENTS)
+    lst = ""
+    if EVENTS:
+        lst = '<ul class="evlist rv">%s</ul>' % "".join('<li><b>%s</b><span>%s</span></li>' % (e(n), e(d)) for n, d in EVENTS)
     body = page_hero(root, [(T("Início"), ""), (T("Eventos"), None)], T("Eventos"), T("Novidades, aulas especiais e eventos nos ginásios Pro Gym."), "hero/hero-2.jpg", T("Sala de treino do Pro Gym")) + """
-<section class="tight"><div class="wrap"><h2 class="sp">%s</h2><p class="sub rv">%s</p>
-<div class="actions rv" style="margin-top:1.6rem"><a class="btn" href="%s" target="_blank" rel="noopener">Instagram</a><a class="btn dark" href="%s" target="_blank" rel="noopener">Facebook</a></div></div></section>""" % (
-        sp(T("Acompanha-nos nas redes")), T("Publicamos os eventos e as fotos nas nossas redes sociais."), IG, FB)
-    write("gallery", layout("gallery/", T("Eventos | Pro Gym Fitness"), T("Eventos e novidades do Pro Gym. Acompanha no Instagram e Facebook."), body, noindex=True))
-    PAGES.append(("gallery/", False))
+<section class="orange-sec" id="inscricao"><div class="wrap book">
+  <div><h2 class="sp">%(h)s</h2><p class="sub rv" style="color:var(--iron)">%(s)s</p>%(lst)s</div>
+  <form class="f rv" id="evForm" novalidate>
+    <label>%(n)s<input id="eName" autocomplete="name" placeholder="%(ph)s" required></label>
+    <label>%(ev)s<input id="eEvent" list="evOpts" placeholder="%(evph)s" required><datalist id="evOpts">%(dl)s</datalist></label>
+    <div class="two"><label>%(g)s<select id="eUnit">%(o)s</select></label><label>%(pp)s<input id="ePeople" type="number" min="1" max="20" value="1" inputmode="numeric"></label></div>
+    <label>%(nt)s<input id="eNote" placeholder="%(ntph)s"></label>
+    <div class="err" id="eErr" role="alert"></div>
+    <button class="btn" type="submit">%(b)s</button>
+    <p class="fine">%(f)s</p>
+  </form></div></section>
+<section class="tight"><div class="wrap"><h2 class="sp">%(h2)s</h2><p class="sub rv">%(s2)s</p>
+<div class="actions rv" style="margin-top:1.4rem"><a class="btn dark" href="%(ig)s" target="_blank" rel="noopener">Instagram</a><a class="btn dark" href="%(fb)s" target="_blank" rel="noopener">Facebook</a></div></div></section>""" % dict(
+        h=sp(T("Inscrição em eventos")), s=T("Diz-nos o evento e quantas pessoas vêm. A mensagem segue pelo WhatsApp para a receção e confirmamos contigo."), lst=lst,
+        n=T("Nome"), ph=T("O teu nome"), ev=T("Evento"), evph=T("Nome do evento"), dl=dl, g=T("Ginásio"), o=opts, pp=T("Pessoas"),
+        nt=T("Nota (opcional)"), ntph=T("Alguma informação para a receção"), b=T("Enviar inscrição pelo WhatsApp"), f=T("Abre o WhatsApp com a mensagem pronta. Este site não guarda os teus dados."),
+        h2=sp(T("Acompanha-nos nas redes")), s2=T("Publicamos os eventos e as fotos nas nossas redes sociais."), ig=IG, fb=FB)
+    write("gallery", layout("gallery/", T("Eventos | Pro Gym Fitness"), T("Inscreve-te nos eventos do Pro Gym. Acompanha as novidades no Instagram e Facebook."), body))
+    PAGES.append(("gallery/", True))
 
 # ---------------- APP ----------------
 def app():

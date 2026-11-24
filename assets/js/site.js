@@ -220,6 +220,21 @@ if(cf){
     send(S('Olá! Sou ','Hello! I\'m ')+n.value.trim()+'. '+m.value.trim(),$('button[type=submit]',cf),noteFor(cf));
   });
 }
+var ev=$('#evForm');
+if(ev){
+  ev.addEventListener('submit',function(e){
+    e.preventDefault();
+    var n=$('#eName'),evn=$('#eEvent'),err=$('#eErr'),pp=$('#ePeople'),un=$('#eUnit').value,nt=$('#eNote').value.trim();
+    if(!n.value.trim()){bad(n,err,S('Escreve o teu nome para continuar.','Please enter your name to continue.'));return}
+    if(!evn.value.trim()){bad(evn,err,S('Escreve o nome do evento.','Please enter the event name.'));return}
+    var c=Math.max(1,Math.min(20,parseInt(pp.value,10)||1));
+    err.textContent='';
+    var pt='Olá! Sou '+n.value.trim()+' e quero inscrever-me no evento "'+evn.value.trim()+'" (Pro Gym '+un+'), para '+c+(c===1?' pessoa':' pessoas')+'.'+(nt?' Nota: '+nt:'');
+    var msg=pt;
+    if(EN){msg='Hello! I\'m '+n.value.trim()+' and I\'d like to register for the event "'+evn.value.trim()+'" (Pro Gym '+un+'), for '+c+(c===1?' person':' people')+'.'+(nt?' Note: '+nt:'')+'\n\n(PT) '+pt}
+    send(msg,$('button[type=submit]',ev),noteFor(ev));
+  });
+}
 var wl=$('#waitForm');
 if(wl){
   wl.addEventListener('submit',function(e){

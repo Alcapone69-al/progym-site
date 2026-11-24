@@ -277,4 +277,13 @@ EN = {
 "Receção": "Reception",
 "Instrutores de aulas": "Class instructors",
 "Personal trainers": "Personal trainers",
+"Inscrição em eventos": "Event registration",
+"Diz-nos o evento e quantas pessoas vêm. A mensagem segue pelo WhatsApp para a receção e confirmamos contigo.": "Tell us the event and how many people are coming. The message goes to reception on WhatsApp and we confirm with you.",
+"Evento": "Event",
+"Nome do evento": "Event name",
+"Pessoas": "People",
+"Nota (opcional)": "Note (optional)",
+"Alguma informação para a receção": "Anything reception should know",
+"Enviar inscrição pelo WhatsApp": "Send registration on WhatsApp",
+"Inscreve-te nos eventos do Pro Gym. Acompanha as novidades no Instagram e Facebook.": "Register for Pro Gym events. Follow the news on Instagram and Facebook.",
 }

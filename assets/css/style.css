@@ -654,3 +654,9 @@ section.calm{padding:var(--sec) 0}
 @media(max-width:700px){.mapbox{aspect-ratio:4/3}}
 .dark-sec .tagc{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.28)}
 .dark-sec .fineprint{color:#cfcfcb}
+@media(min-width:1021px) and (max-width:1240px){
+  .nav>nav>ul{gap:1rem}
+  .nav nav{margin-right:.6rem!important}
+  .nav ul a{font-size:.92rem}
+  .nav .btn.small{padding:.55rem .9rem;font-size:.9rem}
+}
