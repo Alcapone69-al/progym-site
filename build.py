@@ -258,8 +258,8 @@ def write(path, content):
 
 def page_hero(root, crumbs, h1, lead, bg, alt):
     cr = " / ".join('<a href="%s%s">%s</a>' % (root, h, e(n)) if h is not None else '<span aria-current="page">%s</span>' % e(n) for n, h in crumbs)
-    return """<section class="phero"><div class="phero-media">%s</div><div class="phero-in"><h1 class="sp" data-hero aria-label="%s">%s</h1>%s</div></section>""" % (
-        pic(root, bg, alt, "100vw", eager=True), e(h1), sp(h1), ('<p class="lead hr">%s</p>' % e(lead)) if lead else "")
+    return """<section class="phero"><div class="phero-media">%s</div><div class="phero-in"><nav class="crumbs hr" aria-label="%s">%s</nav><h1 class="sp" data-hero aria-label="%s">%s</h1>%s</div></section>""" % (
+        pic(root, bg, alt, "100vw", eager=True), T("Localização"), cr, e(h1), sp(h1), ('<p class="lead hr">%s</p>' % e(lead)) if lead else "")
 
 def TIMETABLE_NOTE():
     """O horário das aulas é uma imagem do Pro Gym, em português; avisa quem lê em inglês."""
@@ -547,7 +547,7 @@ def ofertas():
     root = "../"
     steps = [("Traz um membro novo", "Convida um amigo ou familiar a juntar-se ao Pro Gym."), ("Ganha 1 semana grátis", "Por cada membro que trouxeres."), ("Chega às 4 semanas", "Com 4 membros trazidos ganhas 1 mês grátis.")]
     li = "".join('<li class="rv"><b>%s</b>%s</li>' % (T(a), T(c)) for a, c in steps)
-    body = page_hero(root, [], T("Ofertas"), T("Promoções para membros do Pro Gym."), "hero/hero-2.jpg", T("Sala de treino do Pro Gym")) + promo_block(root) + """
+    body = page_hero(root, [(T("Início"), ""), (T("Ofertas"), None)], T("Ofertas"), T("Promoções para membros do Pro Gym."), "hero/hero-2.jpg", T("Sala de treino do Pro Gym")) + promo_block(root) + """
 <section class="paper tight"><div class="wrap"><h2 class="sp">%s</h2><ol class="steps">%s</ol>
 <p class="fineprint rv">%s</p>
 <div class="actions rv" style="margin-top:1.4rem"><a class="btn" href="%s" target="_blank" rel="noopener">%s</a><a class="btn dark" href="%spricing/">%s</a></div></div></section>""" % (
@@ -625,7 +625,7 @@ def arena():
     shots = "".join('<div>%s<p class="sub" style="margin-top:.6rem">%s</p></div>' % (
         mask(root, img, T(alt), "(min-width:900px) 33vw, 100vw", True, ' style="aspect-ratio:3/4"'), T(n)) for n, img, alt in ARENA if img)
     chips = "".join('<span class="tagc">%s</span>' % T(n) for n, img, alt in ARENA if not img)
-    body = page_hero(root, [], T("Arena do Pro Gym Matola"), T("Desporto e lazer para toda a família, no Parque dos Poetas."), g["cover"], cover_alt(g)) + """
+    body = page_hero(root, [(T("Início"), ""), (T("Arena do Pro Gym Matola"), None)], T("Arena do Pro Gym Matola"), T("Desporto e lazer para toda a família, no Parque dos Poetas."), g["cover"], cover_alt(g)) + """
 <section class="dark-sec tight"><div class="wrap"><h2 class="sp">%(h3)s</h2>
   <div class="photos" style="grid-template-columns:repeat(3,1fr)">%(shots)s</div>
   <div class="chips rv" style="margin-top:1.6rem">%(chips)s</div>
